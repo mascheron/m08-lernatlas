@@ -288,6 +288,40 @@ kbd{font:600 11px var(--f-mono);border:1px solid var(--line);border-bottom-width
 @media print{.lsa,.toc{display:none}.ls{break-inside:avoid-page}}
 .filters.off{display:none}
 @media (max-width:700px){.filters.off{display:flex}}
+
+.mini{float:right;margin-left:8px;border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:2px 10px;font-size:11.5px;cursor:pointer;color:var(--c,var(--accent))}
+.mini:hover{background:var(--accent-soft)}
+.gap{display:inline-block;min-width:3.2em;padding:0 6px;border-bottom:2px dashed var(--c,var(--accent));background:color-mix(in srgb,var(--c,var(--accent)) 14%,transparent);color:transparent;border-radius:4px 4px 0 0;cursor:pointer;user-select:none}
+.gap.open{color:inherit;background:color-mix(in srgb,var(--ok) 18%,transparent);border-bottom-color:var(--ok)}
+.rate{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px}.rate>span{font-size:12px;color:var(--muted)}
+.tool{max-width:78ch;margin:16px 0;padding:14px 16px;border:1px solid var(--line);border-top:4px solid var(--c,var(--accent));border-radius:12px;background:var(--panel)}
+.ttitle{font-family:var(--f-display);font-weight:700;font-size:16px;margin-bottom:8px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.tgrid label{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:var(--muted)}
+.tgrid label.chk{flex-direction:row;align-items:center;gap:8px}
+.tgrid input,.tgrid select,.fcsel select{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+.tout{margin-top:12px}.tout table{border-collapse:collapse;width:100%;font-size:14px}
+.tout th{text-align:left;font-weight:500;color:var(--muted);padding:4px 10px 4px 0}.tout td{padding:4px 0;text-align:right}
+.tout tr.sum th,.tout tr.sum td{border-top:1px solid var(--line);font-weight:700;color:var(--fg)}
+.tout .res{cursor:default;border-left-color:var(--accent)}
+.tnote{font-size:12px;color:var(--muted);margin:8px 0 0}
+.fcbar{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0;font-size:13px;color:var(--muted)}
+.fcsel{font-size:13px;display:inline-flex;gap:8px;align-items:center}
+.fcard{margin:12px 0;padding:18px;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+.fcard small{color:var(--muted)}.fq{font-family:var(--f-display);font-size:19px;line-height:1.4;font-weight:600;margin:8px 0 14px}
+.fa{padding:12px 14px;border-left:4px solid var(--ok);background:color-mix(in srgb,var(--ok) 8%,transparent);border-radius:8px;line-height:1.6}
+.viewbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:10px 0;font-size:13px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.seg button{border:0;background:var(--panel);padding:5px 14px;cursor:pointer;font-size:12.5px;color:var(--fg)}
+.seg button.on{background:var(--accent);color:var(--accent-fg)}
+.meta{font-size:12.5px;color:var(--muted);margin:6px 0 0}.note{font-size:13px;color:var(--muted)}
+.box.done{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 9%,var(--panel))}
+.only-k{display:none}
+.kompakt .lsb,.kompakt .lslead,.kompakt .ls>.box,.kompakt .ls>.tool{display:none}
+.kompakt .ls.open .lsb,.kompakt .ls.open .lslead,.kompakt .ls.open>.box,.kompakt .ls.open>.tool{display:block}
+.kompakt .only-k{display:inline-block}
+.nxt{margin-left:auto}
+@media print{.mini,.rate,.viewbar,.tool{display:none}}
 </style>
 
 <div class="app">
@@ -1395,6 +1429,8 @@ TI('t_faelle','faelle','Fälle und Übungen','Fälle 1.1–10.4','Alle Fälle mi
 N('t_pfad','root','Lernpfad: zehn Einheiten',{th:'pfad',p:'Einheiten 1–10',m:[],sum:'Der Weg durch den Stoff – mit Lernziel, Kernsätzen, Kontrollfragen und allen zugehörigen Inhalten.',b:'<p>Gehe die Einheiten der Reihe nach durch. Jede Einheit zeigt dir Lernziel, Kernsätze, die zugehörigen Normen und Fälle sowie Kontrollfragen zum Aufdecken. „Weiter lernen“ springt zum nächsten noch nicht gelernten Inhalt.</p>',f:'Reihenfolge der Einheiten einprägen.'});
 MODS.forEach(m=>N('e'+m.n,'t_pfad','Einheit '+m.n+': '+m.t,{th:'pfad',kind:'einheit',m:[m.n],src:'Weitere',sum:EH[m.n].z,b:'<p>'+m.inh+'</p>'}));
 N('t_merk','t_pfad','Alle Merksätze im Überblick',{th:'pfad',kind:'merk',m:[],sum:'Alle Merksätze des Lernpfads, nach Einheiten geordnet – zum schnellen Wiederholen und zum Ausdrucken.',b:''});
+N('t_karten','t_pfad','Karteikarten',{th:'pfad',kind:'karten',m:[],sum:'Alle Kontroll- und Prüfungsfragen als Karteikarten: unsichere Karten kommen öfter dran.',b:''});
+N('t_tools','t_pfad','Rechner und Werkzeuge',{th:'pfad',kind:'tools',m:[],sum:'Fristenrechner, Einkommensrechner und Systemfinder zum Ausprobieren.',b:''});
 // Moduleliste für Themenknoten aus den Kindern ableiten
 ['t_grund','t_system','t_verfahren','t_zugang','t_leist','t_eink','t_sozhilfe','t_entsch','t_kv','t_rv','t_pv','t_mitwirkung','t_rechtsschutz','t_faelle'].forEach(id=>{const s=new Set();NODES.filter(n=>n.parent===id).forEach(n=>(n.m||[]).forEach(x=>s.add(x)));NODES.find(n=>n.id===id).m=[...s].sort((a,b)=>a-b);});
 NODES.find(n=>n.id==='t_pfad').m=MODS.map(m=>m.n);
@@ -1861,6 +1897,30 @@ const MS={
  n_aktuell:'Rechtsstand 10. November 2026: Reformen und Entwürfe für 2027 vor jedem Kurs und vor jeder Prüfung noch einmal gegenprüfen.'
 };
 
+/* ===== Lückentext: Schlüsselbegriffe je Merksatz ===== */
+const MB={
+ n_gg20:['Staatsziel','Gesetzgeber'],n_gg74:['Bundesrecht','Ländern und Kommunen'],n_s31:['Ohne Gesetz','welche Vorschrift'],n_gg19:['Rechtsweg'],
+ n_gg1:['menschenwürdiges Existenzminimum'],n_neu2026:['1. Juli 2026','Grundsicherungsgeld'],n_gg3:['Behinderung','Ehe und Familie'],n_s17:['kein Ersatz für Sozialleistungen'],
+ n_eu:['koordiniert','vereinheitlicht'],n_s30:['Wohnsitz oder gewöhnlichem Aufenthalt'],n_sgbbuecher:['SGB I und SGB X','allgemeinen Regeln'],n_grundtypen:['Kausal','final'],
+ n_sozrechte:['Programm','Leistungsgesetz'],n_traeger:['§§ 18–29 SGB I','weiterleiten'],n_ermessen:['Hat Anspruch','fehlerfreie Entscheidung'],n_zustaendig:['den Träger','fristwahrend'],
+ n_sgb14_1:['Gewalttaten','Schutzimpfungen'],n_sgb14_4:['Wahrscheinlichkeit','vermutet'],n_sgb14_13:['vorwerfbare Verursachung','fehlende Aufklärung'],n_sgb14_3:['Zwölf','Grad der Schädigungsfolgen'],
+ n_sgb14_30:['Fallmanagement','15 Sitzungen'],n_sgb14_10:['innerhalb eines Jahres','rückwirkend'],n_sgb14_28:['Vorrang','unpfändbar'],n_beratung:['Rechtsansprüche','Herstellungsanspruch'],
+ n_herstellung:['so gestellt, als hätte der Träger richtig gehandelt'],n_antrag:['formfrei','fristwahrend'],n_handlung:['Handlungsfähigkeit','Einwilligungsvorbehalt'],n_grundsaetze:['von Amts wegen','Sozialgeheimnis'],
+ n_anhoerung:['belastenden Verwaltungsakt','nie unbeantwortet'],n_va:['bestandskräftig','rechtzeitig angefochten'],n_s35:['Gründe','Rechtsbehelf'],n_bekanntgabe:['vierten Tag','nicht ab dem Lesen'],
+ n_datenschutz:['Rechtsgrundlage','Einwilligung'],n_reform26:['30 Prozent','Nichterreichbarkeit'],n_zugang:['15 Jahre','erwerbsfähig','hilfebedürftig'],n_erwerbsf:['drei Stunden','SGB XII'],
+ n_ausschl:['Ausländerfallgruppen','Altersrentner'],n_bg:['Einstandsgemeinschaft','Einstandswille'],n_koop:['kein Verwaltungsakt','Bescheid'],n_pflv:['30 Prozent','drei Monate'],
+ n_erreich:['Drei','persönliche Meldung'],n_bausteine:['Gesamtbedarf','bereinigten Einkommens'],n_regel:['563 Euro','Nullrunde'],n_mehrbedarf:['prozentuale Zuschläge','typisierte Lebenslagen'],
+ n_kdu:['Karenzzeit','1,5-Fache'],n_wohnsich:['Direktzahlung','zwei Monate'],n_abweichend:['Zuschüsse','Darlehen'],n_zufluss:['nach der Antragstellung','vorher'],
+ n_nichteink:['Erbschaften','Schmerzensgeld'],n_einkommen:['100 Euro Grundfreibetrag','20, 30 und 10 Prozent'],n_vermoegen:['keine Karenzzeit','5.000 bis 20.000 Euro'],n_sgb12_abgr:['Erwerbsfähigkeit und Alter','SGB XII'],
+ n_sgb12_ga:['nur auf Antrag','18. Geburtstag'],n_sgb12_regel:['563 Euro','Barbetrag'],n_sgb12_eink:['30 Prozent','281,50 Euro'],n_sgb12_verm:['10.000 Euro','100.000 Euro'],
+ n_sgb12_weitere:['Hilfe zur Pflege','Wohngeld'],n_vprinzip:['Versicherungspflicht','krankenversichert'],n_kvleist:['Hilfsmittel','Fahrkosten'],n_genfikt:['drei (fünf) Wochen','Kostenerstattung'],
+ n_krg:['70 Prozent','78 Wochen'],n_zuz:['2 Prozent','1 Prozent'],n_rente:['fünf Jahre Wartezeit','Reha vor Rente'],n_altersrente:['drei Monate','Abschlägen'],
+ n_pflegegrad:['Sechs Module','Pflegegrad 1 bis 5'],n_pvleist:['Pflegegeld','Entlastungsbetrag'],n_mitw:['Tatsachen angeben','§ 65 SGB I'],n_versagung:['schriftlichen Hinweis','Nachholung'],
+ n_ueberpr:['ein Jahr','sofort'],n_aufheb:['§ 48','§ 50'],n_wid:['jeweils ein Monat','keine aufschiebende Wirkung'],n_wieder:['binnen eines Monats','holt die Handlung nach'],
+ n_eil:['§ 86b SGG','einstweilige Anordnung'],n_fristen:['Ein Monat','Tag der Bekanntgabe'],n_pfaend:['unpfändbar','P-Konto'],n_faelleprf:['derselben Reihenfolge','Betreuungsrecht'],
+ n_aktuell:['10. November 2026','gegenprüfen']
+};
+
 /* ===== Lernpfad ===== */
 function orderIds(){const seen=new Set(),out=[];MODS.forEach(m=>CONTENT.filter(n=>n.m.includes(m.n)).forEach(n=>{if(!seen.has(n.id)){seen.add(n.id);out.push(n.id);}}));CONTENT.forEach(n=>{if(!seen.has(n.id)){seen.add(n.id);out.push(n.id);}});return out;}
 function nextUnlearned(from){const o=orderIds(),i=from?o.indexOf(from):-1;for(let k=1;k<=o.length;k++){const id=o[(i+k+o.length)%o.length];if(!learned.has(id))return id;}return null;}
@@ -1875,40 +1935,193 @@ function pfadHtml(id){
   return h;
 }
 const mk=(t,cur)=>autolinkText(esc(t),cur);
+const LSJ=(k,d)=>{try{const v=JSON.parse(LS.get(k)||'');return v&&typeof v==='object'?v:d;}catch(e){return d;}};
+let FC=LSJ('m8-fc',{});               // Karteikarten: id -> Fach (1 = nochmal, 2 = einmal gewusst, 3 = sicher)
+const saveFC=()=>LS.set('m8-fc',JSON.stringify(FC));
+let KOMPAKT=LS.get('m8-mode')==='k';  // Ansicht: nur Merksätze
+const CARDS=[];
+Object.keys(EH).forEach(u=>EH[u].kq.forEach((q,i)=>CARDS.push({id:'k'+u+'_'+i,u:+u,q:q[0],a:q[1],node:'e'+u})));
+NODES.filter(n=>n.q&&n.id!=='root').forEach(n=>CARDS.push({id:'q_'+n.id,u:(n.m&&n.m[0])||0,q:n.q[0],a:n.q[1],node:n.id}));
+const boxOf=id=>FC[id]||0;
+
+/* ----- Bausteine ----- */
+function merkBox(id){
+  const m=MS[id];if(!m)return '';
+  return `<div class="merk" data-mid="${id}"><span class="mtag">Merksatz</span>${MB[id]?`<button class="mini" data-gap="${id}" title="Merksatz als Lückentext üben">Lückentext</button>`:''}<p>${mk(m,id)}</p></div>`;
+}
+function gapHtml(id){
+  const t=MS[id],ps=(MB[id]||[]).map(p=>[t.indexOf(p),p]).filter(x=>x[0]>=0).sort((a,b)=>a[0]-b[0]);
+  let o='',pos=0;
+  ps.forEach(([i,p])=>{if(i<pos)return;o+=esc(t.slice(pos,i))+`<span class="gap" role="button" tabindex="0" data-reveal title="Antippen zum Aufdecken">${esc(p)}</span>`;pos=i+p.length;});
+  return o+esc(t.slice(pos));
+}
+function rateHtml(cid){
+  const b=boxOf(cid);
+  return `<div class="rate"><span>Gewusst?</span><button class="btn ${b>=2?'on':''}" data-rate="${cid}|1">Gewusst</button><button class="btn ${b===1?'on':''}" data-rate="${cid}|0">Nochmal üben</button></div>`;
+}
+function quizBox(cid,title,q,a,cur){
+  return `<div class="box quiz" data-cid="${cid}"><h3>${esc(title)}</h3><p><b>${autolinkText(esc(q),cur)}</b></p><button class="btn rev" data-act="rev">Antwort zeigen</button><div class="ans"><p>${autolinkText(esc(a),cur)}</p>${rateHtml(cid)}</div></div>`;
+}
+function kqStand(u){
+  const ids=EH[u].kq.map((q,i)=>'k'+u+'_'+i),sure=ids.filter(i=>boxOf(i)>=2).length;
+  return `${sure} von ${ids.length} Kontrollfragen gewusst`;
+}
+
+/* ----- Rechner ----- */
+const WT=['So','Mo','Di','Mi','Do','Fr','Sa'];
+const pad=n=>String(n).padStart(2,'0');
+const keyD=d=>d.getUTCFullYear()+'-'+pad(d.getUTCMonth()+1)+'-'+pad(d.getUTCDate());
+const fmtD=d=>WT[d.getUTCDay()]+', '+pad(d.getUTCDate())+'.'+pad(d.getUTCMonth()+1)+'.'+d.getUTCFullYear();
+const parseD=s=>{const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s||'');return m?new Date(Date.UTC(+m[1],+m[2]-1,+m[3])):null;};
+const addDays=(d,n)=>new Date(d.getTime()+n*864e5);
+function addMonths(d,n){const y=d.getUTCFullYear(),m=d.getUTCMonth()+n,last=new Date(Date.UTC(y,m+1,0)).getUTCDate();return new Date(Date.UTC(y,m,Math.min(d.getUTCDate(),last)));}
+function ostern(y){const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1;return new Date(Date.UTC(y,mo-1,da));}
+const HOL={};
+function feiertage(y){ // gesetzliche Feiertage in Sachsen (ohne Fronleichnam, das nur in Teilen gilt)
+  if(HOL[y])return HOL[y];const o=ostern(y),s=new Set();
+  [[0,1],[4,1],[9,3],[9,31],[11,25],[11,26]].forEach(([m,d])=>s.add(keyD(new Date(Date.UTC(y,m,d)))));
+  [-2,1,39,50].forEach(n=>s.add(keyD(addDays(o,n))));
+  let b=new Date(Date.UTC(y,10,22));while(b.getUTCDay()!==3)b=addDays(b,-1);s.add(keyD(b)); // Buß- und Bettag
+  return HOL[y]=s;
+}
+const frei=d=>d.getUTCDay()===0||d.getUTCDay()===6||feiertage(d.getUTCFullYear()).has(keyD(d));
+function fristRechnen(start,art,zugang){
+  const bek=zugang==='post'?addDays(start,4):start;
+  const roh=art==='j'?addMonths(bek,12):addMonths(bek,1);
+  let ende=roh;while(frei(ende))ende=addDays(ende,1);
+  return{bek,roh,ende,vor:addDays(ende,-7)};
+}
+function einkommenRechnen(brutto,netto,kind,unterhalt){
+  const cl=(x,a,b)=>Math.max(a,Math.min(b,x));
+  const grund=brutto>0?Math.min(100,brutto):0,obere=kind?1500:1200;
+  const s1=brutto>100?0.2*(cl(brutto,100,520)-100):0,s2=brutto>520?0.3*(cl(brutto,520,1000)-520):0,s3=brutto>1000?0.1*(cl(brutto,1000,obere)-1000):0;
+  const freib=grund+s1+s2+s3,anr=Math.max(0,netto-freib-unterhalt);
+  return{grund,s1,s2,s3,freib,anr};
+}
+const eur=x=>x.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+function systemFinden(a){
+  const L=(id,t)=>`<a data-go="${id}" role="button" tabindex="0">${t}</a>`;
+  if(a.alter==='ja')return{t:'SGB XII, 4. Kapitel: Grundsicherung im Alter',d:`Wer die Altersgrenze erreicht hat, scheidet aus dem SGB II aus. Es gibt Grundsicherung im Alter nach § 41 ff. SGB XII, nur auf Antrag beim Sozialamt (${L('n_sgb12_ga','Grundsicherung im Alter und bei Erwerbsminderung')}).`};
+  if(a.erw==='ja')return{t:'SGB II: Grundsicherungsgeld (Jobcenter)',d:`Erwerbsfähig ist, wer mindestens drei Stunden täglich arbeiten kann; dazu kommen Alter ab 15, Hilfebedürftigkeit und gewöhnlicher Aufenthalt (${L('n_zugang','Leistungsberechtigte')}, ${L('n_erwerbsf','Erwerbsfähigkeit')}).`};
+  if(a.dauer==='ja')return{t:'SGB XII, 4. Kapitel: Grundsicherung bei Erwerbsminderung',d:`Wer nicht erwerbsfähig und dauerhaft voll erwerbsgemindert ist, erhält ab 18 Grundsicherung nach dem 4. Kapitel SGB XII, ebenfalls nur auf Antrag (${L('n_sgb12_ga','Grundsicherung im Alter und bei Erwerbsminderung')}).`};
+  if(a.bg==='ja')return{t:'SGB II: Grundsicherungsgeld für nicht erwerbsfähige Mitglieder der Bedarfsgemeinschaft',d:`Nicht erwerbsfähige Personen in Bedarfsgemeinschaft mit Erwerbsfähigen werden vom Jobcenter erfasst (${L('n_sgb12_abgr','Abgrenzung SGB II / SGB XII')}, ${L('n_bg','Bedarfsgemeinschaft')}).`};
+  return{t:'SGB XII, 3. Kapitel: Hilfe zum Lebensunterhalt',d:`Nicht erwerbsfähig, nicht dauerhaft voll erwerbsgemindert und ohne Bedarfsgemeinschaft mit Erwerbsfähigen: Hilfe zum Lebensunterhalt beim Sozialamt (${L('n_sgb12_abgr','Abgrenzung SGB II / SGB XII')}).`};
+}
+function toolHtml(key){
+  const hint='<p class="tnote">Lernhilfe, keine Rechtsberatung.</p>';
+  if(key==='frist')return `<div class="tool" data-tool="frist"><div class="ttitle">Fristenrechner</div>
+<div class="tgrid"><label>Datum<input type="date" data-f="d" value="2026-11-05"></label>
+<label>Das Datum ist<select data-f="z"><option value="post">Aufgabe zur Post (Bekanntgabe am 4. Tag danach)</option><option value="zugang">nachgewiesener Zugang oder Übergabe</option></select></label>
+<label>Frist<select data-f="a"><option value="m">Widerspruch: ein Monat (§ 84 SGG)</option><option value="k">Klage nach Widerspruchsbescheid: ein Monat (§ 87 SGG)</option><option value="j">Widerspruch ohne Rechtsbehelfsbelehrung: ein Jahr (§ 66 Abs. 2 SGG)</option></select></label></div>
+<div class="tout" data-out aria-live="polite"></div>${hint}</div>`;
+  if(key==='eink')return `<div class="tool" data-tool="eink"><div class="ttitle">Einkommensrechner SGB II (§ 11b)</div>
+<div class="tgrid"><label>Brutto (€/Monat)<input type="number" min="0" step="0.01" data-f="b" value="1300"></label>
+<label>Netto (€/Monat)<input type="number" min="0" step="0.01" data-f="n" value="1040"></label>
+<label>Titulierter Unterhalt (€)<input type="number" min="0" step="0.01" data-f="u" value="0"></label>
+<label class="chk"><input type="checkbox" data-f="k"> Minderjähriges Kind in der Bedarfsgemeinschaft</label></div>
+<div class="tout" data-out aria-live="polite"></div><p class="tnote">Gerechnet wird mit dem Grundfreibetrag von 100 €. Einzelnachweise über 400 € Einkommen und besondere Absetzbeträge sind nicht berücksichtigt. Lernhilfe, keine Rechtsberatung.</p></div>`;
+  if(key==='sys')return `<div class="tool" data-tool="sys"><div class="ttitle">Systemfinder: SGB II oder SGB XII?</div>
+<div class="tgrid"><label>Altersgrenze erreicht?<select data-f="alter"><option value="nein">Nein</option><option value="ja">Ja</option></select></label>
+<label>Erwerbsfähig (mindestens 3 Stunden täglich)?<select data-f="erw"><option value="ja">Ja</option><option value="nein">Nein</option></select></label>
+<label>Dauerhaft voll erwerbsgemindert (ab 18)?<select data-f="dauer"><option value="nein">Nein</option><option value="ja">Ja</option></select></label>
+<label>Bedarfsgemeinschaft mit Erwerbsfähigen?<select data-f="bg"><option value="nein">Nein</option><option value="ja">Ja</option></select></label></div>
+<div class="tout" data-out aria-live="polite"></div><p class="tnote">Vorausgesetzt sind jeweils Hilfebedürftigkeit und gewöhnlicher Aufenthalt in Deutschland. Auch Ausschlüsse (zum Beispiel stationäre Einrichtung) sind nicht geprüft. Lernhilfe, keine Rechtsberatung.</p></div>`;
+  return '';
+}
+function toolRechnen(t){
+  const f=k=>t.querySelector('[data-f="'+k+'"]'),out=t.querySelector('[data-out]'),key=t.dataset.tool;
+  if(key==='frist'){
+    const d=parseD(f('d').value);if(!d){out.innerHTML='<b>Bitte ein Datum wählen.</b>';return;}
+    const r=fristRechnen(d,f('a').value,f('z').value),verschoben=keyD(r.roh)!==keyD(r.ende);
+    out.innerHTML=`<table><tr><th>Bekanntgabe</th><td>${fmtD(r.bek)}</td></tr><tr><th>Fristende</th><td><b>${fmtD(r.ende)}</b>${verschoben?` <small>(verschoben von ${fmtD(r.roh)}: Wochenende oder Feiertag, § 64 Abs. 3 SGG)</small>`:''}</td></tr><tr><th>Vorfrist (eine Woche vorher)</th><td>${fmtD(r.vor)}</td></tr></table>`;
+  }else if(key==='eink'){
+    const b=Math.max(0,parseFloat(f('b').value)||0),nraw=f('n').value,n=nraw===''?b:Math.max(0,parseFloat(nraw)||0),u=Math.max(0,parseFloat(f('u').value)||0);
+    const r=einkommenRechnen(b,n,f('k').checked,u);
+    out.innerHTML=`<table><tr><th>Nettoeinkommen</th><td>${eur(n)}</td></tr><tr><th>− Grundfreibetrag</th><td>${eur(r.grund)}</td></tr><tr><th>− 20 % (100 bis 520 €)</th><td>${eur(r.s1)}</td></tr><tr><th>− 30 % (520 bis 1.000 €)</th><td>${eur(r.s2)}</td></tr><tr><th>− 10 % (1.000 bis ${f('k').checked?'1.500':'1.200'} €)</th><td>${eur(r.s3)}</td></tr>${u?`<tr><th>− titulierter Unterhalt</th><td>${eur(u)}</td></tr>`:''}<tr class="sum"><th>Freibetrag insgesamt</th><td>${eur(r.freib)}</td></tr><tr class="sum"><th>Anzurechnendes Einkommen</th><td><b>${eur(r.anr)}</b></td></tr></table>`;
+  }else if(key==='sys'){
+    const r=systemFinden({alter:f('alter').value,erw:f('erw').value,dauer:f('dauer').value,bg:f('bg').value});
+    out.innerHTML=`<div class="res"><b>${r.t}</b><p>${r.d}</p></div>`;
+  }
+}
+const TOOL_AFTER={n_bekanntgabe:'frist',n_fristen:'frist',n_einkommen:'eink',n_sgb12_abgr:'sys'};
+
+/* ----- Karteikarten ----- */
+const FS={u:0,deck:[],i:0,show:false,started:false,know:0,miss:0};
+function fcScope(){return CARDS.filter(c=>!FS.u||c.u===FS.u);}
+function fcStart(){
+  const pool=fcScope().filter(c=>boxOf(c.id)<3).map(c=>({c,k:boxOf(c.id)+Math.random()*0.9}));
+  pool.sort((a,b)=>a.k-b.k);FS.deck=pool.slice(0,20).map(x=>x.c);FS.i=0;FS.show=false;FS.know=0;FS.miss=0;FS.started=true;
+}
+function fcHtml(){
+  const sc=fcScope(),cnt=[0,0,0,0];sc.forEach(c=>cnt[boxOf(c.id)]++);
+  let h=`<div class="box" style="max-width:78ch"><h3>Karteikarten (${sc.length} Karten)</h3><label class="fcsel">Einheit <select data-fcu><option value="0">Alle Einheiten</option>${MODS.map(m=>`<option value="${m.n}" ${FS.u===m.n?'selected':''}>Einheit ${m.n}</option>`).join('')}</select></label>
+<div class="fcbar"><span><b>${cnt[0]}</b> neu</span><span><b>${cnt[1]}</b> nochmal</span><span><b>${cnt[2]}</b> fast sicher</span><span><b>${cnt[3]}</b> sicher</span></div>`;
+  if(!FS.started)h+=`<button class="btn on" data-fc="start" style="background:var(--accent);border-color:var(--accent);color:var(--accent-fg)">${cnt[3]===sc.length?'Alles sicher – trotzdem üben':'Runde starten'}</button><p class="tnote">Eine Runde umfasst bis zu 20 Karten. Unsichere und neue Karten kommen zuerst. Dreimal in Folge gewusst heißt „sicher“. Dein Stand wird im Browser gespeichert.</p>`;
+  else if(FS.i>=FS.deck.length){h+=`<div class="res"><b>Runde geschafft</b><p>${FS.know} gewusst, ${FS.miss} nochmal üben.</p></div><button class="btn on" data-fc="start" style="background:var(--accent);border-color:var(--accent);color:var(--accent-fg)">Nächste Runde</button> <button class="btn" data-fc="stop">Beenden</button>`;}
+  else{const c=FS.deck[FS.i],pct=Math.round(100*FS.i/FS.deck.length);
+    h+=`<div class="prog"><i style="width:${pct}%"></i></div><div class="fcard"><small>Karte ${FS.i+1} von ${FS.deck.length} · Einheit ${c.u}</small><p class="fq">${esc(c.q)}</p>`;
+    if(!FS.show)h+=`<button class="btn on" data-fc="show" style="background:var(--accent);border-color:var(--accent);color:var(--accent-fg)">Antwort zeigen</button>`;
+    else h+=`<div class="fa">${autolinkText(esc(c.a),c.node)}</div><div class="rate"><button class="btn" data-fc="know">Gewusst</button><button class="btn" data-fc="miss">Nochmal üben</button><button class="btn" data-go="${c.node}">Zum Thema</button></div>`;
+    h+=`</div><button class="btn" data-fc="stop">Runde abbrechen</button>`;}
+  return h+'</div>';
+}
+function fcAktion(a){
+  if(a==='start'){fcStart();}
+  else if(a==='stop'){FS.started=false;}
+  else if(a==='show'){FS.show=true;}
+  else if(a==='know'||a==='miss'){const c=FS.deck[FS.i];if(c){FC[c.id]=a==='know'?Math.min(3,Math.max(1,boxOf(c.id))+1):1;saveFC();if(a==='know')FS.know++;else FS.miss++;}FS.i++;FS.show=false;}
+  renderDetail('t_karten',true);
+}
+function wiederholenBox(){
+  const n=CARDS.length,sure=CARDS.filter(c=>boxOf(c.id)>=3).length,open=CARDS.filter(c=>boxOf(c.id)<3).length;
+  return `<div class="box" style="max-width:78ch"><h3>Wiederholen</h3><div><b>${sure}</b> von ${n} Karteikarten sicher, ${open} noch offen</div><div class="prog"><i style="width:${Math.round(100*sure/n)}%"></i></div><button class="btn" data-go="t_karten">Karteikarten üben</button> <button class="btn" data-go="t_tools">Rechner und Werkzeuge</button></div>`;
+}
+function toolsHtml(){
+  return `<p>Drei kleine Werkzeuge zum Ausprobieren. Du findest sie auch direkt in den passenden Kapiteln.</p>${toolHtml('frist')}${toolHtml('eink')}${toolHtml('sys')}`;
+}
+
+/* ----- Kapitel ----- */
 function kapitelNodes(u){const all=CONTENT.filter(x=>x.m.includes(u));return{lern:all.filter(x=>x.p!=='Fall'&&x.m[0]===u),ref:all.filter(x=>x.p!=='Fall'&&x.m[0]!==u),faelle:all.filter(x=>x.p==='Fall')};}
-function abschnittHtml(x,u,i){
-  const m=MS[x.id];
+function abschnittHtml(x,u,i,next){
+  const tgt=next?'ls_'+next.id:'ls_kq',lbl=next?next.title:'Kontrollfragen';
   let h=`<section class="ls" id="ls_${x.id}" style="--c:var(--c-${x.th})"><div class="lsh"><span class="lsn">${u}.${i}</span><h3>${esc(x.title)}</h3>${x.p?`<span class="lsp">${esc(x.p)}</span>`:''}</div>`;
-  if(m)h+=`<div class="merk"><span class="mtag">Merksatz</span><p>${mk(m,x.id)}</p></div>`;
+  h+=merkBox(x.id);
   if(x.sum)h+=`<p class="lslead">${esc(x.sum)}</p>`;
   h+=`<div class="lsb">${autolink(x.b,x.id)}</div>`;
+  if(TOOL_AFTER[x.id])h+=toolHtml(TOOL_AFTER[x.id]);
   if(x.f)h+=`<div class="box focus"><h3>Prüfungsfokus</h3><p>${esc(x.f)}</p></div>`;
-  if(x.q)h+=`<div class="box quiz"><h3>Prüfungsfrage</h3><p><b>${esc(x.q[0])}</b></p><button class="btn rev" data-act="rev">Antwort zeigen</button><div class="ans"><p>${autolinkText(esc(x.q[1]),x.id)}</p></div></div>`;
-  h+=`<div class="lsa"><button class="btn ${learned.has(x.id)?'on':''}" data-lid="${x.id}">${learned.has(x.id)?'✓ Gelernt':'Als gelernt markieren'}</button><button class="btn" data-go="${x.id}">Einzelseite öffnen</button></div></section>`;
+  if(x.q)h+=quizBox('q_'+x.id,'Prüfungsfrage',x.q[0],x.q[1],x.id);
+  h+=`<div class="lsa"><button class="btn only-k" data-open="${x.id}">Ausführlich lesen</button><button class="btn ${learned.has(x.id)?'on':''}" data-lid="${x.id}">${learned.has(x.id)?'✓ Gelernt':'Als gelernt markieren'}</button><button class="btn" data-go="${x.id}">Einzelseite öffnen</button><button class="btn nxt" data-sc="${tgt}">Weiter: ${esc(lbl.length>38?lbl.slice(0,36)+'…':lbl)} ↓</button></div></section>`;
   return h;
+}
+function lesezeit(list){
+  const w=list.reduce((a,x)=>a+(x.b||'').replace(/<[^>]+>/g,' ').split(/\s+/).filter(Boolean).length,0);
+  return Math.max(1,Math.round(w/190));
 }
 function einheitHtml(n){
   const u=n.m[0],E=EH[u]||{},K=kapitelNodes(u);
   const items=K.lern.concat(K.faelle);
   const done=items.filter(x=>learned.has(x.id)).length,pct=items.length?Math.round(100*done/items.length):0;
-  let h=`<div class="box focus"><h3>Lernziel und Überblick</h3><p>${esc(E.z||'')}</p></div>`;
+  let h=`<div class="box focus"><h3>Lernziel und Überblick</h3><p>${esc(E.z||'')}</p><p class="meta">Lesezeit etwa ${lesezeit(K.lern)} Minuten · ${K.lern.length} Themen · ${K.faelle.length} Fälle · ${(E.kq||[]).length} Kontrollfragen</p></div>`;
   if(E.ks&&E.ks.length)h+=`<div class="merk big" id="ls_ks"><span class="mtag">Kernsätze der Einheit ${u}</span><ul>${E.ks.map(k=>`<li>${mk(k,n.id)}</li>`).join('')}</ul></div>`;
   h+=`<div class="box" style="max-width:78ch"><h3>Kapitel-Fortschritt: ${done} von ${items.length} gelernt</h3><div class="prog"><i style="width:${pct}%"></i></div></div>`;
-  h+=`<h4>Inhalt dieses Kapitels</h4><div class="toc">${K.lern.map((x,i)=>`<button data-sc="ls_${x.id}"><span class="ck">${learned.has(x.id)?'✓':u+'.'+(i+1)}</span>${esc(x.title)}</button>`).join('')}${K.faelle.length?`<button data-sc="ls_faelle"><span class="ck">F</span>Fälle zum Üben</button>`:''}<button data-sc="ls_kq"><span class="ck">?</span>Kontrollfragen</button></div>`;
-  h+=K.lern.map((x,i)=>abschnittHtml(x,u,i+1)).join('');
+  h+=`<div class="viewbar"><span>Ansicht</span><div class="seg" role="group" aria-label="Ansicht"><button data-mode="a" class="${KOMPAKT?'':'on'}">Alles lesen</button><button data-mode="k" class="${KOMPAKT?'on':''}">Nur Merksätze</button></div><small>Tipp: „Nur Merksätze“ eignet sich zum Wiederholen.</small></div>`;
+  h+=`<h4 id="ls_toc">Inhalt dieses Kapitels</h4><div class="toc">${K.lern.map((x,i)=>`<button data-sc="ls_${x.id}"><span class="ck">${learned.has(x.id)?'✓':u+'.'+(i+1)}</span>${esc(x.title)}</button>`).join('')}${K.faelle.length?`<button data-sc="ls_faelle"><span class="ck">F</span>Fälle zum Üben</button>`:''}<button data-sc="ls_kq"><span class="ck">?</span>Kontrollfragen</button></div>`;
+  h+=K.lern.map((x,i)=>abschnittHtml(x,u,i+1,K.lern[i+1])).join('');
   if(K.ref.length)h+=`<div class="box" style="max-width:78ch"><h3>Hier ebenfalls relevant</h3><div class="rel">${K.ref.map(x=>`<button data-go="${x.id}" style="--c:var(--c-${x.th})">${esc((x.p?x.p+' ':'')+x.title.slice(0,46))}</button>`).join('')}</div></div>`;
   if(K.faelle.length)h+=`<h4 id="ls_faelle">Fälle zum Üben</h4><div class="cl">${K.faelle.map(x=>`<button data-go="${x.id}" style="--c:var(--c-${x.th})"><span class="ck">${learned.has(x.id)?'✓':''}</span><span>${esc(x.title)}</span></button>`).join('')}</div>`;
-  if(E.kq&&E.kq.length)h+=`<h4 id="ls_kq">Kontrollfragen</h4>`+E.kq.map((q,i)=>`<div class="box quiz"><h3>Frage ${i+1}</h3><p><b>${esc(q[0])}</b></p><button class="btn rev" data-act="rev">Antwort zeigen</button><div class="ans"><p>${autolinkText(esc(q[1]),n.id)}</p></div></div>`).join('');
+  if(E.kq&&E.kq.length)h+=`<h4 id="ls_kq">Kontrollfragen</h4><p class="note" data-kqcount="${u}">${kqStand(u)}</p>`+E.kq.map((q,i)=>quizBox('k'+u+'_'+i,'Frage '+(i+1),q[0],q[1],n.id)).join('');
+  if(items.length&&done===items.length)h+=`<div class="box done"><h3>Kapitel geschafft</h3><p>Alle Themen und Fälle dieser Einheit sind als gelernt markiert. ${byId['e'+(u+1)]?`Weiter geht es mit Einheit ${u+1}.`:'Das war die letzte Einheit.'}</p></div>`;
   const pv=byId['e'+(u-1)],nx=byId['e'+(u+1)];
   h+=`<div class="nav">${pv?`<button class="btn" data-go="${pv.id}">← Einheit ${u-1}</button>`:'<span></span>'}${nx?`<button class="btn" data-go="${nx.id}">Einheit ${u+1} →</button>`:'<button class="btn" data-go="t_merk">Alle Merksätze →</button>'}</div>`;
   return h;
 }
 function kartenHtml(){
   return `<div class="box" style="max-width:none"><h3>Der Lernpfad auf einen Blick</h3><div class="karten">${MODS.map(m=>{const K=kapitelNodes(m.n),it=K.lern.concat(K.faelle),d=it.filter(x=>learned.has(x.id)).length,pc=it.length?Math.round(100*d/it.length):0;
-    return `<button class="karte" data-go="e${m.n}"><span class="kn">${m.n}</span><b>${esc(m.t)}</b><small>${K.lern.length} Themen · ${K.faelle.length} Fälle</small><span class="prog"><i style="width:${pc}%"></i></span></button>`;}).join('')}</div></div>`;
+    return `<button class="karte" data-go="e${m.n}"><span class="kn">${m.n}</span><b>${esc(m.t)}</b><small>${K.lern.length} Themen · ${K.faelle.length} Fälle · ca. ${lesezeit(K.lern)} Min.</small><span class="prog"><i style="width:${pc}%"></i></span></button>`;}).join('')}</div></div>`;
 }
 function merkHtml(){
-  return MODS.map(m=>{const K=kapitelNodes(m.n),E=EH[m.n]||{};
+  return MODS.map(m=>{const K=kapitelNodes(m.n);
     return `<div class="merk big"><span class="mtag">Einheit ${m.n}: ${esc(m.t)}</span><ul>${K.lern.filter(x=>MS[x.id]).map(x=>`<li><a data-go="${x.id}" role="button" tabindex="0" title="Zum Thema">${esc(x.title)}:</a> ${mk(MS[x.id],x.id)}</li>`).join('')}</ul></div>`;}).join('');
 }
 /* ===== Detail ===== */
@@ -1917,7 +2130,7 @@ function seqIds(){return NODES.filter(n=>!vis||vis.has(n.id)).map(n=>n.id);}
 function renderDetail(id,keepScroll){
   const n=byId[id],d=$('detail'),prevTop=d.scrollTop;
   const trail=parentsOf(id).reverse().map(x=>byId[x]);
-  let h=`<div style="--c:var(--c-${n.th})">`;
+  let h=`<div class="${n.kind==='einheit'&&KOMPAKT?'kompakt':''}" style="--c:var(--c-${n.th})">`;
   if(trail.length)h+=`<div class="crumb">${trail.map(t=>`<button data-go="${t.id}">${esc(t.title)}</button>`).join(' › ')}</div>`;
   h+=`<div class="dh">${n.p?`<div class="pnl">${esc(n.p)}</div>`:''}<h2>${esc(n.title)}</h2></div>`;
   if(n.sum&&n.kind!=='einheit')h+=`<p class="lead">${esc(n.sum)}</p>`;
@@ -1928,12 +2141,16 @@ function renderDetail(id,keepScroll){
     h+=`<div class="box"><h3>Farblegende</h3><div class="legend">${Object.keys(TH).filter(k=>k!=='root').map(k=>`<button data-th="${k}" style="--c:var(--c-${k})"><span class="orb"></span>${esc(TH[k])}</button>`).join('')}</div></div>`;
   }
   if(id==='root'||id==='t_pfad'||n.kind==='einheit')h+=pfadHtml(id);
-  if(MS[id])h+=`<div class="merk"><span class="mtag">Merksatz</span><p>${mk(MS[id],id)}</p></div>`;
+  if(id==='root'||id==='t_pfad')h+=wiederholenBox();
+  if(MS[id])h+=merkBox(id);
   if(n.b)h+=`<div>${autolink(n.b,id)}</div>`;
   if(n.kind==='einheit')h+=einheitHtml(n);
   if(n.f)h+=`<div class="box focus"><h3>Prüfungsfokus</h3><p>${esc(n.f)}</p></div>`;
-  if(n.q)h+=`<div class="box quiz"><h3>Prüfungsfrage</h3><p><b>${esc(n.q[0])}</b></p><button class="btn rev" data-act="rev">Antwort zeigen</button><div class="ans"><p>${esc(n.q[1])}</p></div></div>`;
+  if(n.q)h+=quizBox('q_'+id,'Prüfungsfrage',n.q[0],n.q[1],id);
+  if(TOOL_AFTER[id])h+=toolHtml(TOOL_AFTER[id]);
   if(n.kind==='merk')h+=merkHtml();
+  if(n.kind==='karten')h+=fcHtml();
+  if(n.kind==='tools')h+=toolsHtml();
   if(n.rel.length)h+=`<h4>Verwandte Themen und Normen</h4><div class="rel">${n.rel.filter(r=>byId[r]).map(r=>`<button data-go="${r}" style="--c:var(--c-${byId[r].th})">${esc((byId[r].p?byId[r].p+' ':'')+byId[r].title.slice(0,46))}</button>`).join('')}</div>`;
   if(kids[id])h+=`<h4>Enthält</h4><div class="kids">${kids[id].filter(k=>!vis||vis.has(k.id)).map(k=>`<button class="kid" data-go="${k.id}" style="--c:var(--c-${k.th})"><b>${esc(k.title)}</b><span>${k.p?esc(k.p):''}</span></button>`).join('')}</div>`;
   if(n.l.length)h+=`<div class="box"><h3>Weiterführende Links</h3>${linkList(n.l)}</div>`;
@@ -1942,6 +2159,7 @@ function renderDetail(id,keepScroll){
   if(i>-1&&seq.length>1){const pv=byId[seq[i-1]],nx=byId[seq[i+1]];h+=`<div class="nav">${pv?`<button class="btn" data-go="${pv.id}">← ${esc((pv.p?pv.p+' ':'')+pv.title)}</button>`:'<span></span>'}${nx?`<button class="btn" data-go="${nx.id}">${esc((nx.p?nx.p+' ':'')+nx.title)} →</button>`:'<span></span>'}</div>`;}
   h+='</div>';
   d.innerHTML=h;
+  d.querySelectorAll('.tool').forEach(toolRechnen);
   if(hlRe)hlDom(d);
   d.scrollTop=keepScroll?prevTop:0;
 }
@@ -1973,6 +2191,12 @@ $('tree').addEventListener('keydown',e=>{
   else if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();const rows=[...document.querySelectorAll('#tree [data-id]')];const i=rows.indexOf(row)+(e.key==='ArrowDown'?1:-1);if(rows[i])rows[i].focus();}
 });
 $('detail').addEventListener('click',e=>{
+  const gp=e.target.closest('[data-gap]');if(gp){const m=gp.closest('.merk'),id=gp.dataset.gap,p=m.querySelector('p'),an=m.classList.toggle('luecke');p.innerHTML=an?gapHtml(id):mk(MS[id],id);gp.textContent=an?'Alles zeigen':'Lückentext';return;}
+  const rv=e.target.closest('[data-reveal]');if(rv){rv.classList.toggle('open');return;}
+  const rt=e.target.closest('[data-rate]');if(rt){const [cid,v]=rt.dataset.rate.split('|');FC[cid]=v==='1'?Math.min(3,Math.max(1,boxOf(cid))+1):1;saveFC();const q=rt.closest('.rate');if(q){const bs=q.querySelectorAll('[data-rate]');bs[0].classList.toggle('on',boxOf(cid)>=2);bs[1].classList.toggle('on',boxOf(cid)===1);}const kc=document.querySelector('[data-kqcount]');if(kc)kc.textContent=kqStand(+kc.dataset.kqcount);toast(v==='1'?'Als gewusst gemerkt':'Kommt wieder dran');return;}
+  const fc=e.target.closest('[data-fc]');if(fc){fcAktion(fc.dataset.fc);return;}
+  const md=e.target.closest('[data-mode]');if(md){KOMPAKT=md.dataset.mode==='k';LS.set('m8-mode',KOMPAKT?'k':'a');const w=$('detail').firstElementChild;if(w)w.classList.toggle('kompakt',KOMPAKT);md.parentElement.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===md));return;}
+  const op=e.target.closest('[data-open]');if(op){const sec=op.closest('.ls');const o=sec.classList.toggle('open');op.textContent=o?'Wieder einklappen':'Ausführlich lesen';return;}
   const sc=e.target.closest('[data-sc]');if(sc){const el=document.getElementById(sc.dataset.sc);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});return;}
   const ld=e.target.closest('[data-lid]');if(ld){const id=ld.dataset.lid;tog(learned,id);saveSets();renderLeft();renderDetail(sel,true);toast(learned.has(id)?'Als gelernt markiert':'Markierung entfernt');return;}
   const g=e.target.closest('[data-go]');if(g){select(g.dataset.go,true);return;}
@@ -1982,7 +2206,9 @@ $('detail').addEventListener('click',e=>{
   if(a.dataset.act==='fav'){tog(fav,sel);saveSets();renderLeft();renderDetail(sel,true);toast(fav.has(sel)?'Gemerkt':'Merkung entfernt');}
   if(a.dataset.act==='rev'){const q=a.closest('.quiz');q.classList.toggle('open');a.textContent=q.classList.contains('open')?'Antwort verbergen':'Antwort zeigen';}
 });
-$('detail').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('tr[data-go],a[data-go]')){e.preventDefault();select(e.target.dataset.go,true);}});
+$('detail').addEventListener('input',e=>{const t=e.target.closest('.tool');if(t)toolRechnen(t);});
+$('detail').addEventListener('change',e=>{const t=e.target.closest('.tool');if(t){toolRechnen(t);return;}if(e.target.matches('[data-fcu]')){FS.u=+e.target.value;FS.started=false;renderDetail('t_karten',true);}});
+$('detail').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('tr[data-go],a[data-go],[data-reveal]')){e.preventDefault();if(e.target.dataset.go)select(e.target.dataset.go,true);else e.target.click();}});
 $('expAll').onclick=()=>{view='tree';NODES.forEach(n=>{if(hasKids(n.id))expanded.add(n.id);});renderLeft();};
 $('colAll').onclick=()=>{view='tree';expanded=new Set(['root']);renderLeft();};
 $('vTree').onclick=()=>{view='tree';LS.set('m8-view','tree');renderLeft();};
