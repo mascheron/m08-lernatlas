@@ -1788,10 +1788,10 @@ function kapitelNodes(u){const all=CONTENT.filter(x=>x.m.includes(u));return{ler
 function abschnittHtml(x,u,i){
   const m=MS[x.id];
   let h=`<section class="ls" id="ls_${x.id}" style="--c:var(--c-${x.th})"><div class="lsh"><span class="lsn">${u}.${i}</span><h3>${esc(x.title)}</h3>${x.p?`<span class="lsp">${esc(x.p)}</span>`:''}</div>`;
+  if(m)h+=`<div class="merk"><span class="mtag">Merksatz</span><p>${mk(m,x.id)}</p></div>`;
   if(x.sum)h+=`<p class="lslead">${esc(x.sum)}</p>`;
   h+=`<div class="lsb">${autolink(x.b,x.id)}</div>`;
   if(x.f)h+=`<div class="box focus"><h3>Prüfungsfokus</h3><p>${esc(x.f)}</p></div>`;
-  if(m)h+=`<div class="merk"><span class="mtag">Merksatz</span><p>${mk(m,x.id)}</p></div>`;
   if(x.q)h+=`<div class="box quiz"><h3>Prüfungsfrage</h3><p><b>${esc(x.q[0])}</b></p><button class="btn rev" data-act="rev">Antwort zeigen</button><div class="ans"><p>${autolinkText(esc(x.q[1]),x.id)}</p></div></div>`;
   h+=`<div class="lsa"><button class="btn ${learned.has(x.id)?'on':''}" data-lid="${x.id}">${learned.has(x.id)?'✓ Gelernt':'Als gelernt markieren'}</button><button class="btn" data-go="${x.id}">Einzelseite öffnen</button></div></section>`;
   return h;
@@ -1801,11 +1801,11 @@ function einheitHtml(n){
   const items=K.lern.concat(K.faelle);
   const done=items.filter(x=>learned.has(x.id)).length,pct=items.length?Math.round(100*done/items.length):0;
   let h=`<div class="box focus"><h3>Lernziel und Überblick</h3><p>${esc(E.z||'')}</p></div>`;
+  if(E.ks&&E.ks.length)h+=`<div class="merk big" id="ls_ks"><span class="mtag">Kernsätze der Einheit ${u}</span><ul>${E.ks.map(k=>`<li>${mk(k,n.id)}</li>`).join('')}</ul></div>`;
   h+=`<div class="box" style="max-width:78ch"><h3>Kapitel-Fortschritt: ${done} von ${items.length} gelernt</h3><div class="prog"><i style="width:${pct}%"></i></div></div>`;
   h+=`<h4>Inhalt dieses Kapitels</h4><div class="toc">${K.lern.map((x,i)=>`<button data-sc="ls_${x.id}"><span class="ck">${learned.has(x.id)?'✓':u+'.'+(i+1)}</span>${esc(x.title)}</button>`).join('')}${K.faelle.length?`<button data-sc="ls_faelle"><span class="ck">F</span>Fälle zum Üben</button>`:''}<button data-sc="ls_kq"><span class="ck">?</span>Kontrollfragen</button></div>`;
   h+=K.lern.map((x,i)=>abschnittHtml(x,u,i+1)).join('');
   if(K.ref.length)h+=`<div class="box" style="max-width:78ch"><h3>Hier ebenfalls relevant</h3><div class="rel">${K.ref.map(x=>`<button data-go="${x.id}" style="--c:var(--c-${x.th})">${esc((x.p?x.p+' ':'')+x.title.slice(0,46))}</button>`).join('')}</div></div>`;
-  if(E.ks&&E.ks.length)h+=`<div class="merk big" id="ls_ks"><span class="mtag">Kernsätze der Einheit ${u}</span><ul>${E.ks.map(k=>`<li>${mk(k,n.id)}</li>`).join('')}</ul></div>`;
   if(K.faelle.length)h+=`<h4 id="ls_faelle">Fälle zum Üben</h4><div class="cl">${K.faelle.map(x=>`<button data-go="${x.id}" style="--c:var(--c-${x.th})"><span class="ck">${learned.has(x.id)?'✓':''}</span><span>${esc(x.title)}</span></button>`).join('')}</div>`;
   if(E.kq&&E.kq.length)h+=`<h4 id="ls_kq">Kontrollfragen</h4>`+E.kq.map((q,i)=>`<div class="box quiz"><h3>Frage ${i+1}</h3><p><b>${esc(q[0])}</b></p><button class="btn rev" data-act="rev">Antwort zeigen</button><div class="ans"><p>${autolinkText(esc(q[1]),n.id)}</p></div></div>`).join('');
   const pv=byId['e'+(u-1)],nx=byId['e'+(u+1)];
@@ -1837,6 +1837,7 @@ function renderDetail(id,keepScroll){
     h+=`<div class="box"><h3>Farblegende</h3><div class="legend">${Object.keys(TH).filter(k=>k!=='root').map(k=>`<button data-th="${k}" style="--c:var(--c-${k})"><span class="orb"></span>${esc(TH[k])}</button>`).join('')}</div></div>`;
   }
   if(id==='root'||id==='t_pfad'||n.kind==='einheit')h+=pfadHtml(id);
+  if(MS[id])h+=`<div class="merk"><span class="mtag">Merksatz</span><p>${mk(MS[id],id)}</p></div>`;
   if(n.b)h+=`<div>${autolink(n.b,id)}</div>`;
   if(n.kind==='einheit')h+=einheitHtml(n);
   if(n.f)h+=`<div class="box focus"><h3>Prüfungsfokus</h3><p>${esc(n.f)}</p></div>`;
