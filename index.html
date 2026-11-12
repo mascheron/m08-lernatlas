@@ -328,7 +328,7 @@ kbd{font:600 11px var(--f-mono);border:1px solid var(--line);border-bottom-width
   </div>
 </div>
 <div class="toast" id="toast"></div>
-<div class="navpad" aria-label="Navigation"><button class="u" data-nav="up" aria-label="Eine Ebene höher">▲</button><button class="l" data-nav="prev" aria-label="Voriges Thema">◀</button><button class="d" data-nav="down" aria-label="Eine Ebene tiefer">▼</button><button class="r" data-nav="next" aria-label="Nächstes Thema">▶</button></div>
+<div class="navpad" aria-label="Navigation"><button class="u" data-nav="up" aria-label="Eine Ebene höher">▲</button><button class="l" data-nav="prev" aria-label="Voriges Thema">◀</button><button class="d" data-nav="down" aria-label="Nächste Hauptebene">▼</button><button class="r" data-nav="next" aria-label="Nächstes Thema">▶</button></div>
 <script>
 /* ===== Daten ===== */
 const G='https://www.gesetze-im-internet.de/', D='https://dejure.org/gesetze/';
@@ -1371,7 +1371,7 @@ N('root',null,'Sozialrecht 1 · Kenntnisse des Sozialrechts',{th:'root',m:[],sum
 <li><b>Filter:</b> Thema, Quelle und Status wirken in jeder Zeile als ODER, die Zeilen untereinander als UND.</li>
 <li><b>Suche:</b> findet Paragrafen (z. B. „§ 11b“ oder „82“), Begriffe und Wortteile, auch mit kleinen Tippfehlern. Mit <kbd>/</kbd> springst du ins Suchfeld.</li>
 <li><b>Tasten:</b> <kbd>T</kbd> blendet die Themen-/Filterleiste ein oder aus, <kbd>B</kbd> den Baum. Beide Tasten gelten nicht, solange du in ein Eingabefeld tippst.</li>
-<li><b>Navigation:</b> <kbd>←</kbd> voriges, <kbd>→</kbd> nächstes Thema (in Baumreihenfolge), <kbd>↑</kbd> eine Ebene höher, <kbd>↓</kbd> eine Ebene tiefer. Auf dem Handy: nach links bzw. rechts wischen für nächstes bzw. voriges Thema; am Seitenanfang nach unten bzw. am Seitenende nach oben wischen für höher bzw. tiefer – oder die Pfeiltasten unten rechts. Gescrollt wird mit Mausrad, Leertaste oder Bild auf/ab.</li>
+<li><b>Navigation:</b> <kbd>←</kbd> voriges, <kbd>→</kbd> nächstes Thema (in Baumreihenfolge), <kbd>↑</kbd> eine Ebene höher, <kbd>↓</kbd> zur nächsten Hauptebene. Auf dem Handy: nach links bzw. rechts wischen für nächstes bzw. voriges Thema; am Seitenanfang nach unten bzw. am Seitenende nach oben wischen für höher bzw. zur nächsten Hauptebene – oder die Pfeiltasten unten rechts. Gescrollt wird mit Mausrad, Leertaste oder Bild auf/ab.</li>
 <li><b>Verlinkung:</b> Paragrafen im Text springen – wo vorhanden – zur erläuternden Seite; sonst zum Gesetzestext. Verwandte Themen stehen unter „Verwandte Normen“.</li>
 <li><b>Lernen:</b> „Als gelernt markieren“ und „Merken“ speichern deinen Stand im Browser.</li></ul></div>
 <div class="box focus"><h3>Prüfungsfokus</h3><p>Denke in dieser Reihenfolge: <b>1.</b> Wer ist leistungsberechtigt (Erwerbsfähigkeit, Alter, Bedürftigkeit)? <b>2.</b> Welche Leistung ist vorrangig (Versicherung vor Fürsorge)? <b>3.</b> Welcher Bedarf, welches Einkommen, welches Vermögen? <b>4.</b> Welche Verfahrensschritte und Fristen (Antrag, Mitwirkung, Bekanntgabe)? <b>5.</b> Welche Rechtsschutzmöglichkeiten? <b>6.</b> Was folgt für die Betreuung (Wille, Aufgabenkreis, Genehmigung)?</p></div>`,
@@ -2028,7 +2028,9 @@ function navGo(dir){
   }else if(dir==='up'){
     const p=cur&&byId[cur].parent;if(!p||!byId[p]){toast('Oberste Ebene');return;}to=p;
   }else if(dir==='down'){
-    const k=cur?kids[cur]:null;if(!k||!k.length){toast('Keine tiefere Ebene');return;}to=k[0].id;
+    const top=cur&&cur!=='root'?[cur,...parentsOf(cur)].find(x=>byId[x].parent==='root'):null,hk=kids.root||[];
+    if(!cur||cur==='root'){to=hk[0]&&hk[0].id;}
+    else{const i=hk.findIndex(x=>x.id===top);if(i<0||i>=hk.length-1){toast('Letzte Hauptebene');return;}to=hk[i+1].id;}
   }
   if(to){select(to,true);const d=$('detail');if(d)d.scrollTo({top:0,behavior:'auto'});}
 }
