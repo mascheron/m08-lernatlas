@@ -252,6 +252,34 @@ kbd{font:600 11px var(--f-mono);border:1px solid var(--line);border-bottom-width
 .cl button:hover{background:var(--accent-soft)}
 .cl button .ck{width:16px;color:var(--ok);font-weight:700}
 .cl button small{margin-left:auto;color:var(--muted);font-family:var(--f-mono);font-size:11px}
+
+/* Lesepfad */
+.ls{margin:26px 0 0;padding:22px 0 6px;border-top:2px solid var(--line);max-width:78ch}
+.lsh{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-bottom:6px}
+.lsn{font-family:var(--f-mono);font-size:12px;font-weight:700;color:#fff;background:var(--c);border-radius:7px;padding:2px 8px}
+.lsh h3{margin:0;font-family:var(--f-display);font-size:21px;line-height:1.25}
+.lsp{font-family:var(--f-mono);font-size:12px;color:var(--c)}
+.lslead{font-size:16.5px;line-height:1.6;font-style:italic;color:var(--muted);margin:2px 0 12px;max-width:72ch}
+.lsb{font-size:16px;line-height:1.75}
+.lsb p{margin:0 0 14px}.lsb li{margin-bottom:6px}
+.lsb h4{margin-top:18px}
+.lsa{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.merk{margin:16px 0;padding:12px 16px 12px 18px;border-radius:12px;border-left:5px solid var(--c,var(--accent));background:color-mix(in srgb,var(--c,var(--accent)) 11%,var(--panel));max-width:78ch}
+.merk p,.merk ul{margin:4px 0 0;font-size:16px;line-height:1.6;font-weight:500}
+.merk ul{padding-left:20px}.merk li{margin-bottom:6px}
+.merk.big{margin:22px 0}
+.mtag{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--c,var(--accent))}
+.toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px;max-width:78ch;margin:6px 0 4px}
+.toc button{display:flex;gap:9px;align-items:center;text-align:left;border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:7px 10px;cursor:pointer;font-size:13px;color:var(--fg)}
+.toc button:hover{background:var(--accent-soft)}
+.toc .ck{flex:none;min-width:30px;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.karten{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;padding:10px}
+.karte{display:flex;flex-direction:column;gap:5px;text-align:left;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px 13px;cursor:pointer;color:var(--fg);transition:transform .12s,box-shadow .12s}
+.karte:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.karte .kn{font-family:var(--f-mono);font-size:12px;font-weight:700;color:var(--accent)}
+.karte b{font-size:13.5px;line-height:1.35}.karte small{color:var(--muted);font-size:12px}
+.karte .prog{margin:4px 0 0;height:6px}
+@media print{.lsa,.toc{display:none}.ls{break-inside:avoid-page}}
 .filters.off{display:none}
 @media (max-width:700px){.filters.off{display:flex}}
 </style>
@@ -273,7 +301,6 @@ kbd{font:600 11px var(--f-mono);border:1px solid var(--line);border-bottom-width
     <div class="fbar"><button class="btn" id="fToggle" aria-expanded="false" aria-controls="fBody" title="Themen- und Filterleiste (Taste T)">Filter</button><span class="fbadge" id="fBadge"></span><span class="fcnt" id="count2"></span><button class="btn" id="fReset2" hidden>Zurücksetzen</button></div>
     <div class="fbody" id="fBody">
     <div class="frow"><span class="flab">Thema</span><div class="fchips" id="fTheme"></div></div>
-    <div class="frow"><span class="flab">Modul</span><div class="fchips" id="fMod"></div></div>
     <div class="frow"><span class="flab">Quelle</span><div class="fchips" id="fSrc"></div>
       <span class="flab" style="width:auto;margin-left:6px">Status</span><div class="fchips" id="fStat"></div>
       <div class="fstat"><span id="count"></span><button class="btn" id="fReset">Filter zurücksetzen</button></div></div>
@@ -1403,7 +1430,7 @@ N('n_aktuell','t_pfad','Aktualitätshinweise (Stand November 2026)',{p:'Anhang',
 N('root',null,'Sozialrecht 1 · Kenntnisse des Sozialrechts',{th:'root',m:[],sum:'Modul 8 des Sachkundelehrgangs für berufliche Betreuer – 10 Einheiten, thematisch geordnet, verlinkt und mit Lernpfad. Rechtsstand: 10. November 2026.',
  b:`<div class="box"><h3>So arbeitest du damit</h3><ul>
 <li><b>Lernpfad:</b> Der Zweig „Lernpfad“ führt in zehn Einheiten durch das Skript – mit Lernziel, Kernsätzen, Kontrollfragen, den zugehörigen Inhalten und der Schaltfläche „Weiter lernen“.</li>
-<li><b>Filter:</b> Thema, Modul (= Einheit), Quelle und Status wirken in jeder Zeile als ODER, die Zeilen untereinander als UND.</li>
+<li><b>Filter:</b> Thema, Quelle und Status wirken in jeder Zeile als ODER, die Zeilen untereinander als UND.</li>
 <li><b>Suche:</b> findet Paragrafen (z. B. „§ 11b“ oder „82“), Begriffe und Wortteile, auch mit kleinen Tippfehlern. Mit <kbd>/</kbd> springst du ins Suchfeld.</li>
 <li><b>Tasten:</b> <kbd>T</kbd> blendet die Themen-/Filterleiste ein oder aus, <kbd>B</kbd> den Baum. Beide Tasten gelten nicht, solange du in ein Eingabefeld tippst.</li>
 <li><b>Verlinkung:</b> Paragrafen im Text springen – wo vorhanden – zur erläuternden Seite; sonst zum Gesetzestext. Verwandte Themen stehen unter „Verwandte Normen“.</li>
@@ -1428,6 +1455,7 @@ TI('t_rechtsschutz','rechtsschutz','Rechtsschutz','SGG','Widerspruch, Klage, Eil
 TI('t_faelle','faelle','Fälle und Übungen','Fälle 1.1–10.4','Alle Fälle des Skripts mit Lösungshinweisen.','Wende das Gelernte in Fällen an.','<p>Alle Fälle der zehn Einheiten, jeweils mit Lösungshinweisen zum Aufklappen. Wo das Skript keine Lösung enthielt, sind die Hinweise aus den Kernsätzen und Normen entwickelt.</p>');
 N('t_pfad','root','Lernpfad: zehn Einheiten',{th:'pfad',p:'Einheiten 1–10',m:[],sum:'Der Weg durch das Skript – mit Lernziel, Kernsätzen, Kontrollfragen und allen zugehörigen Inhalten.',b:'<p>Gehe die Einheiten der Reihe nach durch. Jede Einheit zeigt dir Lernziel, Kernsätze, die zugehörigen Normen und Fälle sowie Kontrollfragen zum Aufdecken. „Weiter lernen“ springt zum nächsten noch nicht gelernten Inhalt.</p>',f:'Reihenfolge der Einheiten einprägen.'});
 MODS.forEach(m=>N('e'+m.n,'t_pfad','Einheit '+m.n+': '+m.t,{th:'pfad',kind:'einheit',m:[m.n],src:'Weitere',sum:EH[m.n].z,b:'<p>'+m.inh+'</p>'}));
+N('t_merk','t_pfad','Alle Merksätze im Überblick',{th:'pfad',kind:'merk',m:[],sum:'Alle Merksätze des Lernpfads, nach Einheiten geordnet – zum schnellen Wiederholen und zum Ausdrucken.',b:''});
 // Moduleliste für Themenknoten aus den Kindern ableiten
 ['t_grund','t_system','t_verfahren','t_zugang','t_leist','t_eink','t_sozhilfe','t_entsch','t_kv','t_rv','t_pv','t_mitwirkung','t_rechtsschutz','t_faelle'].forEach(id=>{const s=new Set();NODES.filter(n=>n.parent===id).forEach(n=>(n.m||[]).forEach(x=>s.add(x)));NODES.find(n=>n.id===id).m=[...s].sort((a,b)=>a-b);});
 NODES.find(n=>n.id==='t_pfad').m=MODS.map(m=>m.n);
@@ -1454,19 +1482,19 @@ NODES.forEach(n=>{
 const hasKids=id=>!!kids[id];
 const parentsOf=id=>{const a=[];let p=byId[id].parent;while(p){a.push(p);p=byId[p].parent;}return a;};
 const depth=id=>parentsOf(id).length;
-const CONTENT=NODES.filter(n=>n.id!=='root'&&n.hasContent&&!hasKids(n.id)&&n.kind!=='einheit');
+const CONTENT=NODES.filter(n=>n.id!=='root'&&n.hasContent&&!hasKids(n.id)&&n.kind!=='einheit'&&n.kind!=='merk');
 const CSET=new Set(CONTENT.map(n=>n.id));
 const ORD={};NODES.forEach((n,i)=>{ORD[n.id]=i;});
 const srcOf=n=>n.src||'Weitere';
 
 /* ===== Zustand ===== */
 let expanded=new Set(['root']),sel='root',query='',view='tree';
-const F={themes:new Set(),mods:new Set(),src:new Set(),stat:'all'};
+const F={themes:new Set(),src:new Set(),stat:'all'};
 let learned=new Set(),fav=new Set();
 try{learned=new Set(JSON.parse(LS.get('m8-learned')||'[]'));fav=new Set(JSON.parse(LS.get('m8-fav')||'[]'));}catch(e){}
 const saveSets=()=>{LS.set('m8-learned',JSON.stringify([...learned]));LS.set('m8-fav',JSON.stringify([...fav]));};
 let pq=null,hlRe=null,hlTest=null,scores={};
-const filtersActive=()=>F.themes.size||F.mods.size||F.src.size||F.stat!=='all';
+const filtersActive=()=>F.themes.size||F.src.size||F.stat!=='all';
 
 /* ===== Suche ===== */
 function lev1(a,b){ // true, wenn Editierabstand <= 1
@@ -1516,7 +1544,6 @@ function score(n){
 }
 function filterOk(n){
   if(F.themes.size&&!F.themes.has(n.th))return false;
-  if(F.mods.size&&!n.m.some(x=>F.mods.has(x)))return false;
   if(F.src.size&&!F.src.has(srcOf(n)))return false;
   if(F.stat==='open'&&learned.has(n.id))return false;
   if(F.stat==='done'&&!learned.has(n.id))return false;
@@ -1545,28 +1572,25 @@ const themeCount={};CONTENT.forEach(n=>{themeCount[n.th]=(themeCount[n.th]||0)+1
 const modCount={};CONTENT.forEach(n=>n.m.forEach(x=>{modCount[x]=(modCount[x]||0)+1;}));
 function buildFilters(){
   $('fTheme').innerHTML=Object.keys(TH).map(k=>`<button class="chip" data-t="${k}" style="--c:var(--c-${k})" aria-pressed="false"><i></i>${esc(TH[k])} <small style="color:var(--muted)">${themeCount[k]||0}</small></button>`).join('');
-  $('fMod').innerHTML=MODS.map(m=>`<button class="chip m" data-m="${m.n}" aria-pressed="false" title="${esc(m.t)}">M${m.n}</button>`).join('');
   $('fSrc').innerHTML=Object.keys(SRC).map(k=>`<button class="chip" data-s="${k}" aria-pressed="false">${esc(SRC[k])}</button>`).join('');
   $('fStat').innerHTML=[['all','Alle'],['open','Offen'],['done','Gelernt'],['fav','★ Gemerkt'],['quiz','Mit Prüfungsfrage']].map(([k,l])=>`<button class="chip" data-st="${k}" aria-pressed="${k==='all'}">${l}</button>`).join('');
 }
 function syncFilters(){
   document.querySelectorAll('#fTheme .chip').forEach(b=>b.setAttribute('aria-pressed',String(F.themes.has(b.dataset.t))));
-  document.querySelectorAll('#fMod .chip').forEach(b=>b.setAttribute('aria-pressed',String(F.mods.has(+b.dataset.m))));
   document.querySelectorAll('#fSrc .chip').forEach(b=>b.setAttribute('aria-pressed',String(F.src.has(b.dataset.s))));
   document.querySelectorAll('#fStat .chip').forEach(b=>b.setAttribute('aria-pressed',String(F.stat===b.dataset.st)));
 }
 const tog=(set,v)=>set.has(v)?set.delete(v):set.add(v);
 $('fTheme').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b)return;tog(F.themes,b.dataset.t);refresh();});
-$('fMod').addEventListener('click',e=>{const b=e.target.closest('[data-m]');if(!b)return;tog(F.mods,+b.dataset.m);refresh();});
 $('fSrc').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(!b)return;tog(F.src,b.dataset.s);refresh();});
 $('fStat').addEventListener('click',e=>{const b=e.target.closest('[data-st]');if(!b)return;F.stat=b.dataset.st;refresh();});
-$('fReset').onclick=()=>{F.themes.clear();F.mods.clear();F.src.clear();F.stat='all';$('q').value='';query='';pq=null;buildHl();refresh();};
+$('fReset').onclick=()=>{F.themes.clear();F.src.clear();F.stat='all';$('q').value='';query='';pq=null;buildHl();refresh();};
 
 /* ===== Baum, Liste, Ergebnisse ===== */
 function stt(n){return (learned.has(n.id)?'<span class="ok" title="gelernt">✓</span>':'')+(fav.has(n.id)?'<span class="fav" title="gemerkt"> ★</span>':'');}
 function rowHtml(n,d,open){
   const guides='<i></i>'.repeat(d),isTheme=d===1,kidsN=hasKids(n.id);
-  const mm=n.m.length?'<span class="mm">'+n.m.map(x=>`<b class="${F.mods.has(x)?'hi':''}">${x}</b>`).join('')+'</span>':'';
+  const mm='';
   const dim='';
   let cnt='';
   if(kidsN){const c=countDesc(n.id);cnt=`<span class="cnt">${c}</span>`;}
@@ -1590,7 +1614,7 @@ function listNodes(){
 }
 function renderList(){
   const arr=listNodes();
-  $('tree').innerHTML=arr.length?arr.map(n=>`<div class="row lr ${sel===n.id?'sel':''}" role="treeitem" tabindex="0" data-id="${n.id}" style="--c:var(--c-${n.th})"><span class="orb"></span><span class="pn">${esc(n.p)}</span><span class="lbl">${esc(n.title)}</span>${n.m.length?'<span class="mm">'+n.m.map(x=>`<b class="${F.mods.has(x)?'hi':''}">${x}</b>`).join('')+'</span>':''}<span class="stt">${stt(n)}</span></div>`).join(''):'<div class="empty"><b>Keine Treffer</b>Filter lockern oder zurücksetzen.</div>';
+  $('tree').innerHTML=arr.length?arr.map(n=>`<div class="row lr ${sel===n.id?'sel':''}" role="treeitem" tabindex="0" data-id="${n.id}" style="--c:var(--c-${n.th})"><span class="orb"></span><span class="pn">${esc(n.p)}</span><span class="lbl">${esc(n.title)}</span><span class="stt">${stt(n)}</span></div>`).join(''):'<div class="empty"><b>Keine Treffer</b>Filter lockern oder zurücksetzen.</div>';
 }
 function snippet(n){
   const text=n.sum+' '+n.plain;if(!hlTest)return hlText(n.sum||n.plain.slice(0,140));
@@ -1601,7 +1625,7 @@ function snippet(n){
 function renderResults(){
   const arr=NODES.filter(n=>own&&own.has(n.id)).sort((a,b)=>(scores[b.id]-scores[a.id])||(NODES.indexOf(a)-NODES.indexOf(b)));
   if(!arr.length){$('tree').innerHTML=`<div class="empty"><b>Keine Treffer für „${esc(query)}“</b>Tipp: Paragrafennummer (11b), Wortteil (vermög) oder Stichwort (Widerspruch). Auch die Filter oben prüfen.</div>`;return;}
-  $('tree').innerHTML=`<div class="note" style="padding:2px 6px 8px">${arr.length} Treffer, nach Relevanz sortiert</div>`+arr.slice(0,200).map(n=>`<button class="res ${sel===n.id?'sel':''}" data-id="${n.id}" style="--c:var(--c-${n.th})"><span class="pl">${n.p?hlText(n.p):''} · ${esc(TH[n.th])}${n.m.length?' · '+n.m.map(x=>'M'+x).join(' '):''}</span><b>${hlText(n.title)}</b><span class="sn">${snippet(n)}</span></button>`).join('');
+  $('tree').innerHTML=`<div class="note" style="padding:2px 6px 8px">${arr.length} Treffer, nach Relevanz sortiert</div>`+arr.slice(0,200).map(n=>`<button class="res ${sel===n.id?'sel':''}" data-id="${n.id}" style="--c:var(--c-${n.th})"><span class="pl">${n.p?hlText(n.p):''} · ${esc(TH[n.th])}</span><b>${hlText(n.title)}</b><span class="sn">${snippet(n)}</span></button>`).join('');
 }
 function renderLeft(){
   computeVis();
@@ -1614,7 +1638,7 @@ function renderLeft(){
   syncFilters();
 }
 function updFilterBar(){
-  const n=F.themes.size+F.mods.size+F.src.size+(F.stat!=='all'?1:0);
+  const n=F.themes.size+F.src.size+(F.stat!=='all'?1:0);
   $('fBadge').textContent=n?n+' aktiv':'';
   $('fReset2').hidden=!n&&!query;
   const c=$('count');$('count2').textContent=c?c.textContent:'';
@@ -1665,6 +1689,87 @@ function autolink(html,cur){
     return depthA?tok:autolinkText(tok,cur,dflt);
   }).join('');
 }
+/* ===== Merksätze (je Lernthema, für den Lesepfad) ===== */
+const MS={
+ n_gg20:'Das Sozialstaatsprinzip ist ein Staatsziel: Es verpflichtet vor allem den Gesetzgeber, soziale Sicherheit zu gestalten, und gibt im Einzelfall keinen eigenen Anspruch.',
+ n_gg74:'Sozialrecht ist überwiegend Bundesrecht, ausgeführt wird es oft von Ländern und Kommunen – deshalb sind für dieselbe Leistung je nach Ort verschiedene Stellen zuständig.',
+ n_s31:'Ohne Gesetz keine Eingriffe und keine Leistungen: Die erste Frage an jeden Bescheid lautet, auf welche Vorschrift er sich stützt.',
+ n_gg19:'Wer durch die öffentliche Gewalt in seinen Rechten verletzt wird, dem steht der Rechtsweg offen – Bescheide dürfen also immer überprüft werden.',
+ n_gg1:'Menschenwürde und Sozialstaatsprinzip ergeben zusammen ein Grundrecht auf ein menschenwürdiges Existenzminimum.',
+ n_neu2026:'Seit 1. Juli 2026 heißt die Leistung Grundsicherungsgeld; Mitwirkung, Pflichtverletzungen und Nichterreichbarkeit werden strenger behandelt.',
+ n_gg3:'Niemand darf wegen einer Behinderung benachteiligt werden; Ehe und Familie stehen unter besonderem staatlichem Schutz.',
+ n_s17:'Die rechtliche Betreuung ist kein Ersatz für Sozialleistungen: Wer betreut wird, hat dieselben sozialen Rechte wie alle anderen.',
+ n_eu:'Völkerrecht wie die UN-Behindertenrechtskonvention leitet die Auslegung; EU-Recht koordiniert die Sozialsysteme, es vereinheitlicht sie nicht.',
+ n_s30:'Das Sozialgesetzbuch gilt für alle mit Wohnsitz oder gewöhnlichem Aufenthalt im Inland; über- und zwischenstaatliches Recht bleibt unberührt.',
+ n_sgbbuecher:'SGB I und SGB X sind die Klammer: Sie enthalten die allgemeinen Regeln, die für alle besonderen Bücher gelten.',
+ n_grundtypen:'Vorsorge, Entschädigung, Hilfe, Förderung: Kausal fragt, warum der Schaden entstand; final fragt, was jetzt gebraucht wird.',
+ n_sozrechte:'Soziale Rechte sind Programm und Auslegungsmaßstab; ein konkreter Anspruch entsteht erst aus dem jeweiligen Leistungsgesetz.',
+ n_traeger:'Wer die zuständige Stelle nicht kennt, liest die Einweisungsvorschriften der §§ 18–29 SGB I – und wer sich irrt, verliert nichts, denn ein unzuständiger Träger muss den Antrag weiterleiten.',
+ n_ermessen:'„Hat Anspruch“ bindet die Behörde, „soll“ bindet im Regelfall, „kann“ eröffnet Ermessen – auf Ermessen besteht ein Anspruch auf fehlerfreie Entscheidung.',
+ n_zustaendig:'Von der Lebenslage zum Antrag: erst die Leistung bestimmen, dann den Träger, dann den Antrag fristwahrend stellen.',
+ n_sgb14_1:'Das SGB XIV entschädigt gesundheitliche Schäden nach Gewalttaten, Kriegsauswirkungen, Zivildienst und Schutzimpfungen.',
+ n_sgb14_4:'Für den Zusammenhang genügt Wahrscheinlichkeit; bei psychischen Störungen nach Gewalttaten wird er vermutet.',
+ n_sgb14_13:'Gewalttaten umfassen körperliche und psychische Gewalt; vorwerfbare Verursachung und fehlende Aufklärung können zum Ausschluss oder zur Versagung führen.',
+ n_sgb14_3:'Zwölf Leistungsgruppen von Schnellen Hilfen bis Berufsschadensausgleich; die Entschädigungszahlung richtet sich nach dem Grad der Schädigungsfolgen.',
+ n_sgb14_30:'Schnelle Hilfen sind niedrigschwellig: Fallmanagement als Lotse und bis zu 15 Sitzungen in der Traumaambulanz.',
+ n_sgb14_10:'Antrag möglichst innerhalb eines Jahres nach der Tat stellen – dann gibt es Leistungen rückwirkend ab dem Ereignis.',
+ n_sgb14_28:'Das SGB XIV hat Vorrang, Entschädigungszahlungen werden nicht angerechnet und sind unpfändbar.',
+ n_beratung:'Aufklärung, Beratung und Auskunft sind Rechtsansprüche; bei Beratungsfehlern greift der Herstellungsanspruch.',
+ n_herstellung:'Wer wegen eines Beratungsfehlers einen Nachteil erleidet, wird so gestellt, als hätte der Träger richtig gehandelt.',
+ n_antrag:'Der Antrag ist formfrei und bei jedem Träger und jeder Gemeinde fristwahrend möglich; seine Rückwirkung regelt das jeweilige Leistungsgesetz.',
+ n_handlung:'Betreuung ändert die Handlungsfähigkeit nicht; erst Geschäftsunfähigkeit oder ein Einwilligungsvorbehalt schränken sie ein.',
+ n_grundsaetze:'Das Verfahren ist nicht formgebunden, die Behörde ermittelt von Amts wegen – Anhörung, Akteneinsicht und Sozialgeheimnis gehören dazu.',
+ n_anhoerung:'Vor jedem belastenden Verwaltungsakt ist Gelegenheit zur Äußerung zu geben – ein Anhörungsschreiben nie unbeantwortet lassen.',
+ n_va:'Ein falscher Bescheid wird bestandskräftig, wenn er nicht rechtzeitig angefochten wird.',
+ n_s35:'Ein Bescheid muss seine wesentlichen Gründe nennen und über den Rechtsbehelf belehren; fehlt die Belehrung, verlängert sich die Frist.',
+ n_bekanntgabe:'Der Bescheid gilt am vierten Tag nach Aufgabe zur Post als bekannt gegeben; Fristen laufen ab Bekanntgabe, nicht ab dem Lesen.',
+ n_datenschutz:'Sozialdaten dürfen nur mit Rechtsgrundlage oder Einwilligung weitergegeben werden – auch an Angehörige.',
+ n_reform26:'Die Reform bringt mehr Mitwirkung, Vermittlungsvorrang, einheitlich 30 Prozent Minderung, Nichterreichbarkeit und neues Vermögensrecht.',
+ n_zugang:'Vier Voraussetzungen: mindestens 15 Jahre alt und unter der Altersgrenze, erwerbsfähig, hilfebedürftig, gewöhnlicher Aufenthalt in Deutschland.',
+ n_erwerbsf:'Das Leistungsvermögen entscheidet über das System: ab drei Stunden täglich SGB II, darunter SGB XII; bis zur Klärung zahlt das Jobcenter.',
+ n_ausschl:'Ausschlüsse treffen Ausländerfallgruppen, Leistungsberechtigte nach dem AsylbLG, Bewohner stationärer Einrichtungen, Altersrentner und Auszubildende mit förderungsfähiger Ausbildung.',
+ n_bg:'Die Bedarfsgemeinschaft ist eine Einstandsgemeinschaft; bei Partnern wird der Einstandswille bei bestimmten Anhaltspunkten vermutet.',
+ n_koop:'Der Kooperationsplan ist kein Verwaltungsakt, die verbindliche Verpflichtung ergeht dagegen als Bescheid.',
+ n_pflv:'Die Minderung beträgt einheitlich 30 Prozent des Regelbedarfs für drei Monate; Anhörung, wichtiger Grund und Härte schützen.',
+ n_erreich:'Drei aufeinanderfolgende Meldeversäumnisse ohne wichtigen Grund lassen den Anspruch entfallen – eine persönliche Meldung heilt.',
+ n_bausteine:'Gesamtbedarf aus Regelbedarf, Mehrbedarfen, Unterkunft und Heizung, abzüglich des bereinigten Einkommens, ergibt das Grundsicherungsgeld.',
+ n_regel:'Der Regelbedarf ist eine monatliche Pauschale; 2026 beträgt er für Alleinstehende 563 Euro (Nullrunde).',
+ n_mehrbedarf:'Mehrbedarfe sind prozentuale Zuschläge für typisierte Lebenslagen und werden gesondert geprüft.',
+ n_kdu:'Unterkunftskosten werden in tatsächlicher Höhe übernommen, soweit angemessen; in der Karenzzeit gilt seit 1. Juli 2026 die Kappung auf das 1,5-Fache.',
+ n_wohnsich:'Direktzahlung an den Vermieter und Übernahme von Mietschulden sichern die Wohnung; die Schonfrist beträgt zwei Monate nach Zustellung der Räumungsklage.',
+ n_abweichend:'Erstausstattungen sind Zuschüsse, Ersatzbeschaffungen in der Regel Darlehen; Bildung und Teilhabe gibt es überwiegend als Sach- und Dienstleistung.',
+ n_zufluss:'Einkommen ist, was nach der Antragstellung zufließt; Vermögen ist, was schon vorher vorhanden war.',
+ n_nichteink:'Anrechnungsfrei bleiben unter anderem SGB-II-Leistungen, Erbschaften, Aufwandspauschalen nach § 1878 BGB und Schmerzensgeld.',
+ n_einkommen:'Erst bereinigen, dann anrechnen: 100 Euro Grundfreibetrag plus gestaffelter Erwerbstätigenfreibetrag von 20, 30 und 10 Prozent.',
+ n_vermoegen:'Seit 1. Juli 2026 gibt es beim Vermögen keine Karenzzeit mehr; Freibeträge nach Lebensalter, 5.000 bis 20.000 Euro je Person.',
+ n_sgb12_abgr:'Erwerbsfähigkeit und Alter entscheiden, welches Buch den Lebensunterhalt sichert: SGB II für Erwerbsfähige, SGB XII für alle anderen.',
+ n_sgb12_ga:'Grundsicherung im Alter und bei Erwerbsminderung gibt es nur auf Antrag – bei jungen Erwachsenen mit Behinderung nicht den 18. Geburtstag verpassen.',
+ n_sgb12_regel:'Regelbedarf 563 Euro; in Einrichtungen steht der Barbetrag dem betreuten Menschen selbst zu, nicht der Einrichtung.',
+ n_sgb12_eink:'Beim Einkommen im SGB XII bleiben 30 Prozent des Erwerbseinkommens frei (höchstens 281,50 Euro), dazu Freibeträge für Altersvorsorge und Grundrente.',
+ n_sgb12_verm:'Kleinere Barbeträge sind bis 10.000 Euro geschützt – für Ältere deutlich weniger als im SGB II; Unterhalt von Kindern und Eltern wird erst über 100.000 Euro Jahreseinkommen verlangt.',
+ n_sgb12_weitere:'Neben der Existenzsicherung gibt es Hilfe zur Pflege, Hilfen bei besonderen sozialen Schwierigkeiten, andere Lebenslagen und Bestattung – und Wohngeld als Alternative.',
+ n_vprinzip:'Beiträge und Versicherungspflicht tragen das System; die erste Praxisfrage lautet immer: Ist der betreute Mensch krankenversichert?',
+ n_kvleist:'Die Krankenkasse leistet Behandlung, Hilfsmittel, häusliche Krankenpflege, Reha, Entlassmanagement und Fahrkosten – nach Maßgabe von Notwendigkeit und Wirtschaftlichkeit.',
+ n_genfikt:'Entscheidet die Kasse nicht binnen drei (fünf) Wochen und ohne begründete Mitteilung, darf sich der Versicherte die Leistung selbst beschaffen und Kostenerstattung verlangen.',
+ n_krg:'Krankengeld: 70 Prozent des Brutto, höchstens 90 Prozent des Netto, 78 Wochen in drei Jahren – mit lückenloser Arbeitsunfähigkeitsfeststellung.',
+ n_zuz:'Die Belastungsgrenze liegt bei 2 Prozent der Bruttoeinnahmen, bei chronisch Kranken bei 1 Prozent; bei Grundsicherung zählt nur Regelbedarfsstufe 1.',
+ n_rente:'Erwerbsminderungsrente: unter sechs (voll: unter drei) Stunden täglich, fünf Jahre Wartezeit, drei Jahre Pflichtbeiträge in fünf Jahren – Reha vor Rente.',
+ n_altersrente:'Den Rentenantrag etwa drei Monate vor Rentenbeginn stellen; Altersrente schließt das SGB II aus, vorzeitige Rente mit Abschlägen nur bei Zumutbarkeit.',
+ n_pflegegrad:'Sechs Module, gewichtet und in Punkte umgerechnet, ergeben den Pflegegrad 1 bis 5; der Antrag wirkt ab Antragstellung.',
+ n_pvleist:'Pflegegeld, Pflegesachleistung, Entlastungsbetrag und Leistungen bei vollstationärer Pflege richten sich nach dem Pflegegrad.',
+ n_mitw:'Mitwirken heißt Tatsachen angeben, Änderungen melden und Beweismittel vorlegen – die Grenzen stehen in § 65 SGB I.',
+ n_versagung:'Versagung oder Entziehung wegen fehlender Mitwirkung setzen schriftlichen Hinweis, Frist und Ermessen voraus und enden mit der Nachholung.',
+ n_ueberpr:'Auch bestandskräftige rechtswidrige Bescheide lassen sich zurücknehmen lassen; im SGB II und XII wirkt der Antrag nur ein Jahr zurück – deshalb sofort stellen.',
+ n_aufheb:'§ 45 SGB X betrifft Bescheide, die von Anfang an rechtswidrig waren, § 48 Änderungen der Verhältnisse, § 50 die Erstattung.',
+ n_wid:'Widerspruch und Klage: jeweils ein Monat; im SGB II haben sie bei Aufhebung, Minderung oder Mitwirkungsaufforderung keine aufschiebende Wirkung.',
+ n_wieder:'Wer eine Frist unverschuldet versäumt, stellt binnen eines Monats nach Wegfall des Hindernisses Antrag auf Wiedereinsetzung und holt die Handlung nach.',
+ n_eil:'Bei Eilbedürftigkeit hilft der einstweilige Rechtsschutz nach § 86b SGG: Anordnung der aufschiebenden Wirkung oder einstweilige Anordnung.',
+ n_fristen:'Ein Monat ist die Leitfrist des Sozialverfahrens; der Tag der Bekanntgabe entscheidet über ihren Beginn.',
+ n_pfaend:'Grundsicherungsgeld ist unpfändbar; sonstige Geldleistungen werden wie Arbeitseinkommen behandelt – das P-Konto schützt das Guthaben.',
+ n_faelleprf:'Prüfe immer in derselben Reihenfolge, von der Lebenslage über Leistungsberechtigung, Vorrang, Bedarf und Einkommen bis zum Betreuungsrecht.',
+ n_aktuell:'Rechtsstand 10. November 2026: Reformen und Entwürfe für 2027 vor jedem Kurs und vor jeder Prüfung noch einmal gegenprüfen.'
+};
+
 /* ===== Lernpfad ===== */
 function orderIds(){const seen=new Set(),out=[];MODS.forEach(m=>CONTENT.filter(n=>n.m.includes(m.n)).forEach(n=>{if(!seen.has(n.id)){seen.add(n.id);out.push(n.id);}}));CONTENT.forEach(n=>{if(!seen.has(n.id)){seen.add(n.id);out.push(n.id);}});return out;}
 function nextUnlearned(from){const o=orderIds(),i=from?o.indexOf(from):-1;for(let k=1;k<=o.length;k++){const id=o[(i+k+o.length)%o.length];if(!learned.has(id))return id;}return null;}
@@ -1674,35 +1779,49 @@ function pfadHtml(id){
   let h=`<div class="box" style="max-width:78ch"><h3>Dein Lernstand</h3><div><b>${done}</b> von ${o.length} Lerninhalten gelernt (${pct} %)</div><div class="prog"><i style="width:${pct}%"></i></div>`;
   h+=nx?`<button class="btn on" data-go="${nx}" style="background:var(--accent);border-color:var(--accent);color:var(--accent-fg)">Weiter lernen: ${esc(byId[nx].title)} →</button>`:`<b>Alles gelernt – stark!</b>`;
   if(id==='root')h+=` <button class="btn" data-go="e1">Mit Einheit 1 starten</button>`;
-  return h+'</div>';
-}
-function einheitHtml(n){
-  const u=n.m[0],E=EH[u]||{};
-  const items=CONTENT.filter(x=>x.m.includes(u));
-  const done=items.filter(x=>learned.has(x.id)).length,pct=items.length?Math.round(100*done/items.length):0;
-  let h=`<div class="box focus"><h3>Lernziel und Überblick</h3><p>${esc(E.z||'')}</p></div>`;
-  if(E.ks&&E.ks.length)h+=`<div class="box"><h3>Kernsätze</h3><ul>${E.ks.map(k=>`<li>${autolinkText(esc(k),n.id)}</li>`).join('')}</ul></div>`;
-  h+=`<div class="box" style="max-width:78ch"><h3>Inhalte dieser Einheit (${done}/${items.length} gelernt)</h3><div class="prog"><i style="width:${pct}%"></i></div></div><div class="cl">${items.map(x=>`<button data-go="${x.id}" style="--c:var(--c-${x.th})"><span class="ck">${learned.has(x.id)?'✓':''}</span><span>${esc(x.title)}</span><small>${esc(x.p&&x.p!=='Fall'?x.p:(x.p==='Fall'?'Fall':''))}</small></button>`).join('')}</div>`;
-  if(E.kq&&E.kq.length)h+=`<h4>Kontrollfragen</h4>`+E.kq.map((q,i)=>`<div class="box quiz"><h3>Frage ${i+1}</h3><p><b>${esc(q[0])}</b></p><button class="btn rev" data-act="rev">Antwort zeigen</button><div class="ans"><p>${autolinkText(esc(q[1]),n.id)}</p></div></div>`).join('');
-  const pv=byId['e'+(u-1)],nx=byId['e'+(u+1)];
-  h+=`<div class="nav">${pv?`<button class="btn" data-go="${pv.id}">← Einheit ${u-1}</button>`:'<span></span>'}${nx?`<button class="btn" data-go="${nx.id}">Einheit ${u+1} →</button>`:'<span></span>'}</div>`;
+  h+='</div>';
+  if(id==='t_pfad')h+=kartenHtml();
   return h;
 }
-
+const mk=(t,cur)=>autolinkText(esc(t),cur);
+function kapitelNodes(u){const all=CONTENT.filter(x=>x.m.includes(u));return{lern:all.filter(x=>x.p!=='Fall'&&x.m[0]===u),ref:all.filter(x=>x.p!=='Fall'&&x.m[0]!==u),faelle:all.filter(x=>x.p==='Fall')};}
+function abschnittHtml(x,u,i){
+  const m=MS[x.id];
+  let h=`<section class="ls" id="ls_${x.id}" style="--c:var(--c-${x.th})"><div class="lsh"><span class="lsn">${u}.${i}</span><h3>${esc(x.title)}</h3>${x.p?`<span class="lsp">${esc(x.p)}</span>`:''}</div>`;
+  if(x.sum)h+=`<p class="lslead">${esc(x.sum)}</p>`;
+  h+=`<div class="lsb">${autolink(x.b,x.id)}</div>`;
+  if(x.f)h+=`<div class="box focus"><h3>Prüfungsfokus</h3><p>${esc(x.f)}</p></div>`;
+  if(m)h+=`<div class="merk"><span class="mtag">Merksatz</span><p>${mk(m,x.id)}</p></div>`;
+  if(x.q)h+=`<div class="box quiz"><h3>Prüfungsfrage</h3><p><b>${esc(x.q[0])}</b></p><button class="btn rev" data-act="rev">Antwort zeigen</button><div class="ans"><p>${autolinkText(esc(x.q[1]),x.id)}</p></div></div>`;
+  h+=`<div class="lsa"><button class="btn ${learned.has(x.id)?'on':''}" data-lid="${x.id}">${learned.has(x.id)?'✓ Gelernt':'Als gelernt markieren'}</button><button class="btn" data-go="${x.id}">Einzelseite öffnen</button></div></section>`;
+  return h;
+}
+function einheitHtml(n){
+  const u=n.m[0],E=EH[u]||{},K=kapitelNodes(u);
+  const items=K.lern.concat(K.faelle);
+  const done=items.filter(x=>learned.has(x.id)).length,pct=items.length?Math.round(100*done/items.length):0;
+  let h=`<div class="box focus"><h3>Lernziel und Überblick</h3><p>${esc(E.z||'')}</p></div>`;
+  h+=`<div class="box" style="max-width:78ch"><h3>Kapitel-Fortschritt: ${done} von ${items.length} gelernt</h3><div class="prog"><i style="width:${pct}%"></i></div></div>`;
+  h+=`<h4>Inhalt dieses Kapitels</h4><div class="toc">${K.lern.map((x,i)=>`<button data-sc="ls_${x.id}"><span class="ck">${learned.has(x.id)?'✓':u+'.'+(i+1)}</span>${esc(x.title)}</button>`).join('')}${K.faelle.length?`<button data-sc="ls_faelle"><span class="ck">F</span>Fälle zum Üben</button>`:''}<button data-sc="ls_kq"><span class="ck">?</span>Kontrollfragen</button></div>`;
+  h+=K.lern.map((x,i)=>abschnittHtml(x,u,i+1)).join('');
+  if(K.ref.length)h+=`<div class="box" style="max-width:78ch"><h3>Hier ebenfalls relevant</h3><div class="rel">${K.ref.map(x=>`<button data-go="${x.id}" style="--c:var(--c-${x.th})">${esc((x.p?x.p+' ':'')+x.title.slice(0,46))}</button>`).join('')}</div></div>`;
+  if(E.ks&&E.ks.length)h+=`<div class="merk big" id="ls_ks"><span class="mtag">Kernsätze der Einheit ${u}</span><ul>${E.ks.map(k=>`<li>${mk(k,n.id)}</li>`).join('')}</ul></div>`;
+  if(K.faelle.length)h+=`<h4 id="ls_faelle">Fälle zum Üben</h4><div class="cl">${K.faelle.map(x=>`<button data-go="${x.id}" style="--c:var(--c-${x.th})"><span class="ck">${learned.has(x.id)?'✓':''}</span><span>${esc(x.title)}</span></button>`).join('')}</div>`;
+  if(E.kq&&E.kq.length)h+=`<h4 id="ls_kq">Kontrollfragen</h4>`+E.kq.map((q,i)=>`<div class="box quiz"><h3>Frage ${i+1}</h3><p><b>${esc(q[0])}</b></p><button class="btn rev" data-act="rev">Antwort zeigen</button><div class="ans"><p>${autolinkText(esc(q[1]),n.id)}</p></div></div>`).join('');
+  const pv=byId['e'+(u-1)],nx=byId['e'+(u+1)];
+  h+=`<div class="nav">${pv?`<button class="btn" data-go="${pv.id}">← Einheit ${u-1}</button>`:'<span></span>'}${nx?`<button class="btn" data-go="${nx.id}">Einheit ${u+1} →</button>`:'<button class="btn" data-go="t_merk">Alle Merksätze →</button>'}</div>`;
+  return h;
+}
+function kartenHtml(){
+  return `<div class="box" style="max-width:none"><h3>Der Lernpfad auf einen Blick</h3><div class="karten">${MODS.map(m=>{const K=kapitelNodes(m.n),it=K.lern.concat(K.faelle),d=it.filter(x=>learned.has(x.id)).length,pc=it.length?Math.round(100*d/it.length):0;
+    return `<button class="karte" data-go="e${m.n}"><span class="kn">${m.n}</span><b>${esc(m.t)}</b><small>${K.lern.length} Themen · ${K.faelle.length} Fälle</small><span class="prog"><i style="width:${pc}%"></i></span></button>`;}).join('')}</div></div>`;
+}
+function merkHtml(){
+  return MODS.map(m=>{const K=kapitelNodes(m.n),E=EH[m.n]||{};
+    return `<div class="merk big"><span class="mtag">Einheit ${m.n}: ${esc(m.t)}</span><ul>${K.lern.filter(x=>MS[x.id]).map(x=>`<li><a data-go="${x.id}" role="button" tabindex="0" title="Zum Thema">${esc(x.title)}:</a> ${mk(MS[x.id],x.id)}</li>`).join('')}</ul></div>`;}).join('');
+}
 /* ===== Detail ===== */
 function linkList(l){return `<ul class="links">${l.map(x=>`<li><a href="${x[1]}" target="_blank" rel="noopener">${esc(x[0])}</a></li>`).join('')}</ul>`;}
-function matrixHtml(){
-  const ths=Object.keys(TH).filter(k=>k!=='root');let max=1;const grid={};
-  ths.forEach(t=>MODS.forEach(m=>{const c=CONTENT.filter(n=>n.th===t&&n.m.includes(m.n)).length;grid[t+'|'+m.n]=c;if(c>max)max=c;}));
-  let h=`<div class="mx" style="grid-template-columns:minmax(170px,1.6fr) repeat(${MODS.length},minmax(34px,1fr))"><div></div>${MODS.map(m=>`<div class="h">M${m.n}</div>`).join('')}`;
-  ths.forEach(t=>{h+=`<div class="rl" style="--c:var(--c-${t})"><span class="orb"></span>${esc(TH[t])}</div>`;MODS.forEach(m=>{const c=grid[t+'|'+m.n];const on=F.themes.has(t)&&F.mods.has(m.n);h+=c?`<button class="cell" data-mx="${t}|${m.n}" style="--c:var(--c-${t});--k:${(0.25+0.75*c/max).toFixed(2)}" aria-pressed="${on}" title="${esc(TH[t])} · Modul ${m.n}: ${c} Normen">${c}</button>`:`<div class="cell z">·</div>`;});});
-  return h+'</div>';
-}
-function modsHtml(){
-  return `<div class="box" style="max-width:none"><h3>Zuordnung der Einheiten 1–10</h3><div class="tw"><table><thead><tr><th>Modul</th><th>Inhalt</th><th>Zugeordnete Normen</th></tr></thead><tbody>${MODS.map(m=>{
-    const ns=CONTENT.filter(n=>n.m.includes(m.n)&&!hasKids(n.id));
-    return `<tr><td class="num">M${m.n}</td><td><b>${esc(m.t)}</b><p style="margin:4px 0 0;font-size:12.5px">${esc(m.inh)}</p></td><td><div class="rel">${ns.slice(0,14).map(n=>`<button data-go="${n.id}" style="--c:var(--c-${n.th})" title="${esc(n.title)}">${esc(n.p||n.title.slice(0,18))}</button>`).join('')}${ns.length>14?`<span class="note">+${ns.length-14} weitere</span>`:''}</div><button class="btn" style="margin-top:8px" data-mod="${m.n}">${ns.length} Normen im Baum zeigen</button></td></tr>`;}).join('')}</tbody></table></div><p class="note" style="margin-top:8px">Die Zuordnung der Paragrafen zu den Modulen 4 und 5 ist thematisch und ohne Gewähr.</p></div>`;
-}
 function seqIds(){return NODES.filter(n=>!vis||vis.has(n.id)).map(n=>n.id);}
 function renderDetail(id,keepScroll){
   const n=byId[id],d=$('detail'),prevTop=d.scrollTop;
@@ -1710,11 +1829,11 @@ function renderDetail(id,keepScroll){
   let h=`<div style="--c:var(--c-${n.th})">`;
   if(trail.length)h+=`<div class="crumb">${trail.map(t=>`<button data-go="${t.id}">${esc(t.title)}</button>`).join(' › ')}</div>`;
   h+=`<div class="dh">${n.p?`<div class="pnl">${esc(n.p)}</div>`:''}<h2>${esc(n.title)}</h2></div>`;
-  if(n.sum)h+=`<p class="lead">${esc(n.sum)}</p>`;
-  h+=`<div class="pills"><span class="pill th">${esc(TH[n.th]||'Übersicht')}</span>${n.src?`<span class="pill">${esc(SRC[n.src]||n.src)}</span>`:''}${n.m.map(x=>`<button class="pill" style="cursor:pointer" data-mod="${x}" title="${esc(MODS[x-1].t)}">Modul ${x}</button>`).join('')}</div>`;
+  if(n.sum&&n.kind!=='einheit')h+=`<p class="lead">${esc(n.sum)}</p>`;
+  h+=`<div class="pills"><span class="pill th">${esc(TH[n.th]||'Übersicht')}</span>${n.src&&n.kind!=='einheit'?`<span class="pill">${esc(SRC[n.src]||n.src)}</span>`:''}${n.kind==='einheit'||!n.m.length?'':n.m.map(x=>`<button class="pill" style="cursor:pointer" data-go="e${x}" title="${esc(MODS[x-1].t)}">Einheit ${x}</button>`).join('')}</div>`;
   if(CSET.has(id))h+=`<div class="acts"><button class="btn ${learned.has(id)?'on':''}" data-act="learn">${learned.has(id)?'✓ Gelernt':'Als gelernt markieren'}</button><button class="btn fav ${fav.has(id)?'on':''}" data-act="fav">${fav.has(id)?'★ Gemerkt':'☆ Merken'}</button></div>`;
   if(id==='root'){
-    h+=`<div class="box" style="max-width:none"><h3>Themen × Module (Anzahl Lerninhalte, Klick filtert)</h3><div class="tw" style="padding:10px">${matrixHtml()}</div></div>`;
+    h+=kartenHtml();
     h+=`<div class="box"><h3>Farblegende</h3><div class="legend">${Object.keys(TH).filter(k=>k!=='root').map(k=>`<button data-th="${k}" style="--c:var(--c-${k})"><span class="orb"></span>${esc(TH[k])}</button>`).join('')}</div></div>`;
   }
   if(id==='root'||id==='t_pfad'||n.kind==='einheit')h+=pfadHtml(id);
@@ -1722,9 +1841,9 @@ function renderDetail(id,keepScroll){
   if(n.kind==='einheit')h+=einheitHtml(n);
   if(n.f)h+=`<div class="box focus"><h3>Prüfungsfokus</h3><p>${esc(n.f)}</p></div>`;
   if(n.q)h+=`<div class="box quiz"><h3>Prüfungsfrage</h3><p><b>${esc(n.q[0])}</b></p><button class="btn rev" data-act="rev">Antwort zeigen</button><div class="ans"><p>${esc(n.q[1])}</p></div></div>`;
-  if(n.kind==='mods')h+=modsHtml();
+  if(n.kind==='merk')h+=merkHtml();
   if(n.rel.length)h+=`<h4>Verwandte Themen und Normen</h4><div class="rel">${n.rel.filter(r=>byId[r]).map(r=>`<button data-go="${r}" style="--c:var(--c-${byId[r].th})">${esc((byId[r].p?byId[r].p+' ':'')+byId[r].title.slice(0,46))}</button>`).join('')}</div>`;
-  if(kids[id])h+=`<h4>Enthält</h4><div class="kids">${kids[id].filter(k=>!vis||vis.has(k.id)).map(k=>`<button class="kid" data-go="${k.id}" style="--c:var(--c-${k.th})"><b>${esc(k.title)}</b><span>${k.p?esc(k.p):''}${k.m.length?' · '+k.m.map(x=>'M'+x).join(' '):''}</span></button>`).join('')}</div>`;
+  if(kids[id])h+=`<h4>Enthält</h4><div class="kids">${kids[id].filter(k=>!vis||vis.has(k.id)).map(k=>`<button class="kid" data-go="${k.id}" style="--c:var(--c-${k.th})"><b>${esc(k.title)}</b><span>${k.p?esc(k.p):''}</span></button>`).join('')}</div>`;
   if(n.l.length)h+=`<div class="box"><h3>Weiterführende Links</h3>${linkList(n.l)}</div>`;
   if(id==='root')h+=`<div class="box"><h3>Hinweis</h3><p>Rechtsstand dieser Seite: 10. November 2026 (einschließlich der SGB-II-Reform zum 1. Juli 2026). Gesetzestexte vor der Prüfung am aktuellen Stand abgleichen. Die Zusammenfassungen und Lösungshinweise ersetzen weder das Gesetz noch eine Rechtsberatung.</p></div>`;
   const seq=seqIds(),i=seq.indexOf(id);
@@ -1762,9 +1881,9 @@ $('tree').addEventListener('keydown',e=>{
   else if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();const rows=[...document.querySelectorAll('#tree [data-id]')];const i=rows.indexOf(row)+(e.key==='ArrowDown'?1:-1);if(rows[i])rows[i].focus();}
 });
 $('detail').addEventListener('click',e=>{
+  const sc=e.target.closest('[data-sc]');if(sc){const el=document.getElementById(sc.dataset.sc);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});return;}
+  const ld=e.target.closest('[data-lid]');if(ld){const id=ld.dataset.lid;tog(learned,id);saveSets();renderLeft();renderDetail(sel,true);toast(learned.has(id)?'Als gelernt markiert':'Markierung entfernt');return;}
   const g=e.target.closest('[data-go]');if(g){select(g.dataset.go,true);return;}
-  const m=e.target.closest('[data-mod]');if(m){F.mods.clear();F.mods.add(+m.dataset.mod);refresh();toast('Filter: Modul '+m.dataset.mod);return;}
-  const mx=e.target.closest('[data-mx]');if(mx){const [t,mo]=mx.dataset.mx.split('|');const on=F.themes.has(t)&&F.mods.has(+mo)&&F.themes.size===1&&F.mods.size===1;F.themes.clear();F.mods.clear();if(!on){F.themes.add(t);F.mods.add(+mo);}refresh();return;}
   const th=e.target.closest('[data-th]');if(th){F.themes.clear();F.themes.add(th.dataset.th);refresh();return;}
   const a=e.target.closest('[data-act]');if(!a)return;
   if(a.dataset.act==='learn'){tog(learned,sel);saveSets();renderLeft();renderDetail(sel,true);toast(learned.has(sel)?'Als gelernt markiert':'Markierung entfernt');}
